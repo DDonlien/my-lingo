@@ -1,8 +1,8 @@
-# Lingrid
+# myLingo
 
-![Lingrid logo](assets/icon-128.png)
+![myLingo logo](assets/icon-128.png)
 
-Lingrid is a lightweight, modern, local-first PO / CSV multilingual side-by-side matrix editor.
+myLingo is a lightweight, modern, local-first PO / CSV multilingual side-by-side matrix editor.
 
 Its core objective is not to replicate traditional single-language PO editors, but to import multiple language files into a single window, allowing users to view, search, edit, and save multilingual translations corresponding to a single source text in a matrix layout.
 
@@ -14,9 +14,10 @@ Options               选项          Options         オプション      #revi
 
 ## Project Overview
 
-- **Project Name**: Lingrid
+- **Project / repository name**: `my-lingo`
+- **Product name**: `myLingo`
 - **One-sentence description**: A lightweight and modern PO / CSV multilingual matrix editor.
-- **Problem Solved**: Traditional PO editors are usually single-file and single-language oriented. Lingrid prioritizes game and software localization workflows where one source text corresponds to multiple language translations, requiring side-by-side viewing and editing.
+- **Problem Solved**: Traditional PO editors are usually single-file and single-language oriented. myLingo prioritizes game and software localization workflows where one source text corresponds to multiple language translations, requiring side-by-side viewing and editing.
 - **Target Audience**: Indie game developers, small software teams, localization managers, freelance translators, and anyone managing multilingual PO/CSV files.
 - **Current Status**: Phase 1 (v0.1) runnable prototype. Core editor features, lightweight AI suggestions, batch find/replace, and Electron packaging scripts for desktop build are ready. Phase 1.5 (in progress) adds batch AI tag generation, multi-model concurrency, and large-project performance optimizations.
 
@@ -148,14 +149,14 @@ npm run dev
 GitHub Pages web version:
 
 ```text
-https://ddonlien.github.io/lingrid/
+https://ddonlien.github.io/my-lingo/
 ```
 
 Deployments to GitHub Pages are managed automatically via GitHub Actions upon pushes to `main`. Electron build/packaging is handled in Phase 2 (P2) and does not affect the web version.
 
 The web-based preview supports overwriting local files directly if the browser supports the File System Access API. Saving only writes to files with actual changes, validates `readwrite` permissions before writing, and performs a post-write read verification. In browsers without this API, saving falls back to downloading updated file copies, showing a notice that the original files were not overwritten.
 
-The Electron version automatically reopens PO/POT/CSV source files based on the paths stored in the project JSON. Missing or unreadable files are skipped with a warning.
+The Electron version automatically reopens PO/POT/CSV source files based on the paths stored in the project JSON. New project state is saved as `.my-lingo.json`; legacy `.lingrid.json` files remain readable and are migrated on the next save. Missing or unreadable files are skipped with a warning.
 
 In the web preview, due to browser sandboxing, reopening a project requires selecting the project JSON first, then clicking `Authorize Project Folder` to authorize the project directory. The app then recursively finds and restores source files matching the JSON paths. Sandboxed browser constraints do not apply to the desktop Electron app.
 

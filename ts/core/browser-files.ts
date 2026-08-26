@@ -57,7 +57,7 @@ export async function verifyBrowserFileWritable(
   const existingFile = await fileHandle.getFile();
   log?.("write.preflight.file", { name, bytes: existingFile.size, modifiedAt: existingFile.lastModified });
   if (expectedModifiedAt !== undefined && existingFile.lastModified !== expectedModifiedAt) {
-    throw new Error(`File changed outside Lingrid: ${name}`);
+    throw new Error(`File changed outside myLingo: ${name}`);
   }
   log?.("write.preflight.success", { name });
 }

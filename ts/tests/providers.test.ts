@@ -114,8 +114,8 @@ describe("AI settings persistence (localStorage)", () => {
   it("saveAiSettings writes a JSON blob", () => {
     const storage = fakeStorage();
     saveAiSettings({ ...AI_DEFAULT, apiKey: "sk-test", model: "MiniMax-M2.7" }, storage);
-    expect(storage.data["lingrid-ai-settings"]).toContain("sk-test");
-    expect(storage.data["lingrid-ai-settings"]).toContain("MiniMax-M2.7");
+    expect(storage.data["my-lingo-ai-settings"]).toContain("sk-test");
+    expect(storage.data["my-lingo-ai-settings"]).toContain("MiniMax-M2.7");
   });
 
   it("loadAiSettings round-trips through saveAiSettings", () => {
@@ -127,9 +127,9 @@ describe("AI settings persistence (localStorage)", () => {
 
   it("loadAiSettings migrates legacy DeepL free / pro regions to DeepL", () => {
     const storage = fakeStorage();
-    storage.setItem("lingrid-ai-settings", JSON.stringify({ ...AI_DEFAULT, provider: "deepl", deeplRegion: "pro" }));
+    storage.setItem("my-lingo-ai-settings", JSON.stringify({ ...AI_DEFAULT, provider: "deepl", deeplRegion: "pro" }));
     expect(loadAiSettings(storage).deeplRegion).toBe("deepl");
-    storage.setItem("lingrid-ai-settings", JSON.stringify({ ...AI_DEFAULT, provider: "deepl", deeplRegion: "free" }));
+    storage.setItem("my-lingo-ai-settings", JSON.stringify({ ...AI_DEFAULT, provider: "deepl", deeplRegion: "free" }));
     expect(loadAiSettings(storage).deeplRegion).toBe("deepl");
   });
 
@@ -141,7 +141,7 @@ describe("AI settings persistence (localStorage)", () => {
   it("loadAiSettings falls back to defaults for fields missing in stored data", () => {
     // Simulate an older saved entry from before we added provider / deeplRegion.
     const storage = fakeStorage();
-    storage.setItem("lingrid-ai-settings", JSON.stringify({ apiKey: "kept", endpoint: "https://kept", model: "kept" }));
+    storage.setItem("my-lingo-ai-settings", JSON.stringify({ apiKey: "kept", endpoint: "https://kept", model: "kept" }));
     const loaded = loadAiSettings(storage);
     expect(loaded.apiKey).toBe("kept");
     expect(loaded.provider).toBe(AI_DEFAULT.provider);
@@ -152,7 +152,7 @@ describe("AI settings persistence (localStorage)", () => {
   it("loadAiSettings migrates the legacy default prompt without overwriting custom prompts", () => {
     const storage = fakeStorage();
     const legacyPrompt = "Translate the following source text into {{language}}. Return only the translation:\n\n{{source}}";
-    storage.setItem("lingrid-ai-settings", JSON.stringify({
+    storage.setItem("my-lingo-ai-settings", JSON.stringify({
       ...AI_DEFAULT,
       prompt: legacyPrompt,
       profiles: { "openai-compatible:minimax": { prompt: legacyPrompt } },
@@ -161,14 +161,23 @@ describe("AI settings persistence (localStorage)", () => {
     expect(loaded.prompt).toBe(AI_DEFAULT.prompt);
     expect(loaded.profiles?.["openai-compatible:minimax"].prompt).toBe(AI_DEFAULT.prompt);
 
-    storage.setItem("lingrid-ai-settings", JSON.stringify({ ...AI_DEFAULT, prompt: "custom {{source}}" }));
+    storage.setItem("my-lingo-ai-settings", JSON.stringify({ ...AI_DEFAULT, prompt: "custom {{source}}" }));
     expect(loadAiSettings(storage).prompt).toBe("custom {{source}}");
   });
 
   it("loadAiSettings returns AI_DEFAULT when stored JSON is corrupt", () => {
     const storage = fakeStorage();
-    storage.setItem("lingrid-ai-settings", "not-json{{");
+    storage.setItem("my-lingo-ai-settings", "not-json{{");
     expect(loadAiSettings(storage)).toEqual(AI_DEFAULT);
+  });
+
+  it("migrates AI settings from the legacy Lingrid storage key", () => {
+    const storage = fakeStorage();
+    storage.setItem("lingrid-ai-settings", JSON.stringify({ ...AI_DEFAULT, apiKey: "legacy-key", model: "legacy-model" }));
+    const loaded = loadAiSettings(storage);
+    expect(loaded.apiKey).toBe("legacy-key");
+    expect(storage.data["my-lingo-ai-settings"]).toContain("legacy-model");
+    expect(storage.data["lingrid-ai-settings"]).toBeUndefined();
   });
 
   it("saveAiSettings swallows storage exceptions", () => {

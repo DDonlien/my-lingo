@@ -1,4 +1,4 @@
-# Lingrid 灵译视觉规范
+# myLingo 视觉规范
 
 `DESIGN.md` 只记录视觉设计系统，不记录系统架构、仓库说明或具体需求。系统说明写入 `README.md`，任务和验收写入 `REQUIREMENTS.md`。
 
@@ -130,7 +130,7 @@ Phase 1（v0.1）可先以浅色模式为主，但样式应兼容 shadcn/ui 的 
 ## 图标与图像
 
 - 应用图标（brand logo）：一个 L 形主体 + 右下 2×2 矩阵点，L 形从紫色渐变到青绿色，背景为深紫（`#1F1742` 一类）。
-  - 含义：L 取自 Lingrid；矩阵点呼应“多语言 × 多 entry”的矩阵视图。
+  - 含义：L 取自 myLingo；矩阵点呼应“多语言 × 多 entry”的矩阵视图。
   - 应用图标统一使用 PNG；正式打包时由 electron-builder 自动生成 macOS `.icns` 和 Windows `.ico`。
   - 资源位置：
     - `assets/icon-source.png`：原始 1254x1254 源图，重新生成所有尺寸的 source of truth。

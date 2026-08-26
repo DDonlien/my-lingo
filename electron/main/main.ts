@@ -11,7 +11,7 @@ function createWindow() {
     height: 960,
     minWidth: 1100,
     minHeight: 720,
-    title: "Lingrid 灵译",
+    title: "myLingo",
     webPreferences: {
       contextIsolation: true,
       nodeIntegration: false,
@@ -26,7 +26,7 @@ function createWindow() {
 ipcMain.handle("files:open", async (_event, extensions: string[]) => {
   const result = await dialog.showOpenDialog({
     properties: ["openFile", "multiSelections"],
-    filters: [{ name: "Lingrid files", extensions }],
+    filters: [{ name: "myLingo files", extensions }],
   });
   if (result.canceled) return [];
   return Promise.all(
@@ -41,7 +41,7 @@ ipcMain.handle("files:open", async (_event, extensions: string[]) => {
 
 ipcMain.handle("files:write", async (_event, path: string, content: string, expectedModifiedAt?: number) => {
   if (expectedModifiedAt && (await stat(path)).mtimeMs !== expectedModifiedAt) {
-    throw new Error(`File changed outside Lingrid: ${path}`);
+    throw new Error(`File changed outside myLingo: ${path}`);
   }
   await writeFile(path, content, "utf8");
   if (await readFile(path, "utf8") !== content) {

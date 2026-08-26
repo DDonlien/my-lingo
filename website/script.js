@@ -1,13 +1,16 @@
-// Lingrid Website — Language Switcher, Mobile Menu & App Screenshot Localization
+// myLingo Website — Language Switcher, Mobile Menu & App Screenshot Localization
 (function() {
   'use strict';
+
+  const SITE_LANGUAGE_KEY = 'my-lingo-site-lang';
+  const LEGACY_SITE_LANGUAGE_KEY = 'lingrid-site-lang';
 
   const translations = {
     en: {
       'nav.features': 'Features',
       'nav.tryOnline': 'Try Online',
       'hero.badge': 'Open Source & Local-First',
-      'hero.title': 'Lingrid <span class="hero-title-accent">灵译</span>',
+      'hero.title': '<span class="hero-title-accent">myLingo</span>',
       'hero.subtitle': 'A lightweight, modern, local-first PO / CSV multilingual side-by-side matrix editor. Built for indie game developers, small software teams, and freelance translators.',
       'hero.cta.try': 'Try in Browser',
       'hero.cta.download': 'Download Desktop App',
@@ -58,13 +61,13 @@
       'footer.link.docs': 'Documentation',
       'footer.link.roadmap': 'Roadmap',
       'footer.link.issues': 'Issues',
-      'footer.copyright': '© 2026 Lingrid. Open source project.'
+      'footer.copyright': '© 2026 myLingo. Open source project.'
     },
     zh: {
       'nav.features': '功能特性',
       'nav.tryOnline': '在线试用',
       'hero.badge': '开源 & 本地优先',
-      'hero.title': 'Lingrid <span class="hero-title-accent">灵译</span>',
+      'hero.title': '<span class="hero-title-accent">myLingo</span>',
       'hero.subtitle': '轻量、现代、本地优先的 PO / CSV 多语言并排矩阵编辑器。为独立游戏开发者、小型软件团队和自由译者打造。',
       'hero.cta.try': '浏览器中试用',
       'hero.cta.download': '下载桌面版',
@@ -115,7 +118,7 @@
       'footer.link.docs': '文档',
       'footer.link.roadmap': '路线图',
       'footer.link.issues': '问题反馈',
-      'footer.copyright': '© 2026 Lingrid. 开源项目。'
+      'footer.copyright': '© 2026 myLingo. 开源项目。'
     }
   };
 
@@ -170,14 +173,14 @@
     const metaDesc = document.querySelector('meta[name="description"]');
     if (metaDesc) {
       metaDesc.content = lang === 'zh'
-        ? 'Lingrid 灵译 — 轻量、现代、本地优先的 PO / CSV 多语言并排矩阵编辑器，面向游戏与软件本地化。'
-        : 'Lingrid is a lightweight, modern, local-first PO/CSV multilingual side-by-side matrix editor for game and software localization.';
+        ? 'myLingo — 轻量、现代、本地优先的 PO / CSV 多语言并排矩阵编辑器，面向游戏与软件本地化。'
+        : 'myLingo is a lightweight, modern, local-first PO/CSV multilingual side-by-side matrix editor for game and software localization.';
     }
 
     // Update title
     document.title = lang === 'zh'
-      ? 'Lingrid 灵译 — 轻量 PO/CSV 多语言矩阵编辑器'
-      : 'Lingrid — Lightweight PO/CSV Multilingual Matrix Editor';
+      ? 'myLingo — 轻量 PO/CSV 多语言矩阵编辑器'
+      : 'myLingo — Lightweight PO/CSV Multilingual Matrix Editor';
 
     // Update lang toggle UI
     document.querySelectorAll('.lang-option').forEach(opt => {
@@ -185,14 +188,17 @@
     });
 
     // Save preference
-    try { localStorage.setItem('lingrid-site-lang', lang); } catch(e) {}
+    try {
+      localStorage.setItem(SITE_LANGUAGE_KEY, lang);
+      localStorage.removeItem(LEGACY_SITE_LANGUAGE_KEY);
+    } catch(e) {}
   }
 
   // Initialize
   function init() {
     // Load saved preference or detect browser language
     let saved = 'en';
-    try { saved = localStorage.getItem('lingrid-site-lang'); } catch(e) {}
+    try { saved = localStorage.getItem(SITE_LANGUAGE_KEY) || localStorage.getItem(LEGACY_SITE_LANGUAGE_KEY); } catch(e) {}
     if (!saved) {
       const browserLang = navigator.language || navigator.userLanguage || '';
       if (browserLang.toLowerCase().startsWith('zh')) saved = 'zh';

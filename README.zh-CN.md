@@ -1,8 +1,8 @@
-# Lingrid 灵译
+# myLingo
 
-![Lingrid 灵译 logo](assets/icon-128.png)
+![myLingo logo](assets/icon-128.png)
 
-Lingrid 灵译是一个轻量、现代、本地优先的 PO / CSV 多语言并排编辑器。
+myLingo 是一个轻量、现代、本地优先的 PO / CSV 多语言并排编辑器。
 
 它的核心目标不是复制传统单语言 PO 编辑器，而是把多个语言文件导入同一个窗口，用矩阵方式同时查看、搜索、编辑和保存一个 source 对应的多语言译文。
 
@@ -14,9 +14,10 @@ Options               选项          Options         オプション      #revi
 
 ## 项目概述
 
-- 项目名称：Lingrid 灵译
+- 项目 / 仓库名：`my-lingo`
+- 产品名：`myLingo`
 - 一句话简介：轻量现代的 PO / CSV 多语言矩阵编辑器。
-- 解决的问题：传统 PO 编辑器通常以单文件、单语言为主；Lingrid 优先解决游戏和软件本地化中“一个源文本对应多语言译文，需要并排查看和编辑”的问题。
+- 解决的问题：传统 PO 编辑器通常以单文件、单语言为主；myLingo 优先解决游戏和软件本地化中“一个源文本对应多语言译文，需要并排查看和编辑”的问题。
 - 目标用户：独立游戏开发者、小型软件团队、本地化负责人、外包翻译协作者、需要管理多语言 PO/CSV 文件的人。
 - 当前状态：Phase 1（v0.1）可运行原型。核心编辑器、轻量 AI 建议、批量查找替换、Electron 桌面封装命令均已就绪。Phase 1.5 正在进行中，计划加入批量 AI Tag 生成、多模型并发、大工程性能优化等。
 
@@ -150,14 +151,14 @@ npm run dev
 GitHub Pages 浏览器版本：
 
 ```text
-https://ddonlien.github.io/lingrid/
+https://ddonlien.github.io/my-lingo/
 ```
 
 推送到 `main` 后，GitHub Actions 会自动执行测试、构建并部署 `dist/`。Electron 封装属于 Phase 2（P2），不影响浏览器版本发布。
 
 浏览器开发预览在支持 File System Access API 的浏览器中可以直接覆盖通过 `Open` 打开的本地源文件。主保存只写入内容实际变化的文件，写入前确认文件句柄具有 `readwrite` 权限，写入后回读校验磁盘内容。不支持该 API 的浏览器会回退为普通文件选择；此时主保存会下载更新后的副本，并明确提示原文件没有被覆盖，未保存状态也会继续保留。
 
-Electron 桌面版本重新打开项目时，会按项目 JSON 记录的路径自动读取 PO/POT 或 CSV 源文件。个别源文件缺失或不可读时会跳过并提示，不阻止其余文件打开。
+Electron 桌面版本重新打开项目时，会按项目 JSON 记录的路径自动读取 PO/POT 或 CSV 源文件。新项目状态统一保存为 `.my-lingo.json`；旧 `.lingrid.json` 仍可读取，并会在下一次保存时迁移。个别源文件缺失或不可读时会跳过并提示，不阻止其余文件打开。
 
 浏览器开发预览受网页权限模型限制：重新打开项目时，先选择项目 JSON，再点击 `Authorize Project Folder` 以 `readwrite` 模式授权一次项目目录。应用会在目录中递归查找 JSON 引用的源文件并自动恢复；个别缺失文件会跳过并提示。不支持目录选择 API 的浏览器才回退为手动重新选择源文件。项目 JSON 记录项目状态，但不嵌入翻译正文或浏览器文件权限。
 

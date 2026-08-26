@@ -29,7 +29,7 @@ import { detectPoLanguage, parsePo, updatePo } from "../adapters/po";
 import { rateLimitRetryDelayMs, renderAiPromptTemplate, runAdaptiveConcurrentBatch } from "../core/ai";
 import { writeBrowserFile } from "../core/browser-files";
 import { adjacentCell, addRecentProject, applyTranslationDrafts, canImportSourceTypes, cellParticipates, clearRecentProjects, createProject, EDIT_STATUS_CHANGED, EDIT_STATUS_NEVER_EDITED, EDIT_STATUS_OPTIONS, EDIT_STATUS_UNCHANGED, EMPTY_TAG_FILTER, filteredEntries, loadRecentProjects, mergeEntries, nextSortMode, normalizeProjectView, normalizeTag, pathsReferToSameFile, projectStats, removeRecentProject, reorderColumn, saveRecentProjects, serializeProject, sortedEntries } from "../core/project";
-import type { AiProvider, AiSettings, AiSettingsProfile, LingridProject, RecentProject, SourceDocument, TranslationEntry, TranslationSortMode } from "../core/types";
+import type { AiProvider, AiSettings, AiSettingsProfile, MyLingoProject, RecentProject, SourceDocument, TranslationEntry, TranslationSortMode } from "../core/types";
 import { DEEPL_ENDPOINTS, ProviderHttpError as DeepLProviderHttpError, requestDeepLTranslation, toDeepLTargetLanguage } from "./providers/deepl";
 import { ProviderHttpError as OpenAiProviderHttpError, requestOpenAiCompatibleTranslation } from "./providers/openai-compatible";
 import { ANTHROPIC_COMPATIBLE_PRESETS, OPENAI_COMPATIBLE_PRESETS, providerPreset } from "./providers/presets";
@@ -48,7 +48,7 @@ type ProjectConfig = {
   tags?: Record<string, string[]>;
   wordTags?: Record<string, Record<string, string[]>>;
   neverEdited?: Record<string, Record<string, boolean>>;
-  view?: Partial<LingridProject["view"]> & { tag?: string; changedOnly?: boolean };
+  view?: Partial<MyLingoProject["view"]> & { tag?: string; changedOnly?: boolean };
 };
 type BrowserSourceFile = { name: string; path: string; content: string; modifiedAt?: number; fileHandle?: FileSystemFileHandle };
 type SourceSaveStatus = { kind: "idle" } | { kind: "success"; changedCount: number } | { kind: "download"; fileCount: number } | { kind: "error"; message: string };
@@ -61,8 +61,13 @@ const DEFAULT_LANGUAGE_WIDTH = 115;
 const MIN_COLUMN_WIDTH = 96;
 const MAX_COLUMN_WIDTH = 640;
 const MAX_HISTORY_STEPS = 100;
-const UI_LANGUAGE_KEY = "lingrid-ui-language";
-const AI_SETTINGS_KEY = "lingrid-ai-settings";
+const UI_LANGUAGE_KEY = "my-lingo-ui-language";
+const LEGACY_UI_LANGUAGE_KEY = "lingrid-ui-language";
+const AI_SETTINGS_KEY = "my-lingo-ai-settings";
+const LEGACY_AI_SETTINGS_KEY = "lingrid-ai-settings";
+const PROJECT_FILE_NAME = ".my-lingo.json";
+const LEGACY_PROJECT_FILE_NAME = ".lingrid.json";
+const PRODUCT_VERSION = "0.1.2";
 const DEFAULT_OPENAI_PRESET = "openai";
 const DEFAULT_ANTHROPIC_PRESET = "claude-native";
 const LEGACY_DEFAULT_AI_PROMPT = "Translate the following source text into {{language}}. Return only the translation:\n\n{{source}}";
@@ -328,7 +333,9 @@ function migrateAiProfiles(profiles: unknown): Record<string, AiSettingsProfile>
 
 export function loadAiSettings(storage: StorageLike = window.localStorage): AiSettings {
   try {
-    const raw = storage.getItem(AI_SETTINGS_KEY);
+    const current = storage.getItem(AI_SETTINGS_KEY);
+    const legacy = current ? null : storage.getItem(LEGACY_AI_SETTINGS_KEY);
+    const raw = current ?? legacy;
     if (!raw) return AI_DEFAULT;
     const parsed = JSON.parse(raw) as Partial<AiSettings>;
     // Merge over defaults so older stored entries missing new fields keep working.
@@ -340,6 +347,14 @@ export function loadAiSettings(storage: StorageLike = window.localStorage): AiSe
     merged.prompt = migrateDefaultAiPrompt(parsed.prompt) ?? AI_DEFAULT.prompt;
     merged.profiles = migrateAiProfiles(parsed.profiles);
     merged.selectedProfiles = Array.isArray(parsed.selectedProfiles) ? parsed.selectedProfiles : [];
+    if (!current && legacy) {
+      try {
+        storage.setItem(AI_SETTINGS_KEY, JSON.stringify(merged));
+        storage.removeItem(LEGACY_AI_SETTINGS_KEY);
+      } catch {
+        // Keep using the in-memory migrated settings when storage is unavailable.
+      }
+    }
     return merged;
   } catch {
     return AI_DEFAULT;
@@ -423,7 +438,7 @@ function ModalFrame({ title, children, close, className = "" }: { title: string;
   );
 }
 
-function sourceFormatLabel(project: LingridProject): "PO" | "CSV" {
+function sourceFormatLabel(project: MyLingoProject): "PO" | "CSV" {
   return project.documents.some((document) => document.type === "csv") ? "CSV" : "PO";
 }
 
@@ -439,7 +454,7 @@ function demoSourceLanguageForUi(language: UiLanguage): DemoSourceLanguage {
   return "en";
 }
 
-function isDemoProject(project: LingridProject): boolean {
+function isDemoProject(project: MyLingoProject): boolean {
   return project.documents.length === 0 && project.entries.every((entry) => entry.key.startsWith("demo\u0000"));
 }
 
@@ -629,7 +644,7 @@ const MatrixRow = memo(function MatrixRow({
 
 export function App() {
   const [uiLanguage, setUiLanguage] = useState<UiLanguage>(() => {
-    const saved = localStorage.getItem(UI_LANGUAGE_KEY);
+    const saved = localStorage.getItem(UI_LANGUAGE_KEY) ?? localStorage.getItem(LEGACY_UI_LANGUAGE_KEY);
     if (saved === "zh" || saved === "ja" || saved === "en") return saved;
     return navigator.language.startsWith("zh") ? "zh" : navigator.language.startsWith("ja") ? "ja" : "en";
   });
@@ -637,7 +652,7 @@ export function App() {
   const demoSourceLanguage = demoSourceLanguageForUi(uiLanguage);
   const initialDemoProject = useMemo(() => createDemoProject(demoSourceLanguage), [demoSourceLanguage]);
   const initialDemoSelection = { key: "demo\u0000menu.start", column: initialDemoProject.columnOrder[0] ?? "en" };
-  const [project, setProject] = useState<LingridProject>(() => initialDemoProject);
+  const [project, setProject] = useState<MyLingoProject>(() => initialDemoProject);
   const [selection, setSelection] = useState<Selection>({ key: initialDemoSelection.key, language: initialDemoSelection.column });
   const [activeMatrixCell, setActiveMatrixCell] = useState<MatrixCellSelection | null>(initialDemoSelection);
   const [selectedMatrixCells, setSelectedMatrixCells] = useState<MatrixCellSelection[]>([initialDemoSelection]);
@@ -674,6 +689,7 @@ export function App() {
   const deferredSearch = useDeferredValue(project.view.search);
   useEffect(() => {
     localStorage.setItem(UI_LANGUAGE_KEY, uiLanguage);
+    localStorage.removeItem(LEGACY_UI_LANGUAGE_KEY);
     document.documentElement.lang = uiLanguage;
   }, [uiLanguage]);
   useEffect(() => {
@@ -759,12 +775,12 @@ export function App() {
     const runtime = {
       url: window.location.href,
       userAgent: navigator.userAgent,
-      electron: Boolean(window.lingrid),
+      electron: Boolean(window.myLingo),
       showOpenFilePicker: Boolean(window.showOpenFilePicker),
       showDirectoryPicker: Boolean(window.showDirectoryPicker),
       showSaveFilePicker: Boolean(window.showSaveFilePicker),
     };
-    return [`Lingrid diagnostics`, `${new Date().toISOString()} runtime ${JSON.stringify(runtime)}`, ...diagnostics].join("\n");
+    return [`myLingo diagnostics`, `${new Date().toISOString()} runtime ${JSON.stringify(runtime)}`, ...diagnostics].join("\n");
   }
 
   async function copyDiagnostics() {
@@ -824,7 +840,7 @@ export function App() {
     return [...counts.entries()].sort((a, b) => b[1] - a[1]);
   }, [project.entries]);
 
-  function patchProject(patch: Partial<LingridProject>) {
+  function patchProject(patch: Partial<MyLingoProject>) {
     setProject((value) => ({ ...value, ...patch }));
   }
 
@@ -889,7 +905,7 @@ export function App() {
     applyMatrixValue([{ key: entryKey, column: language }], value);
   }
 
-  function isMatrixCellEditable(entryKey: string, column: string, state: LingridProject = project): boolean {
+  function isMatrixCellEditable(entryKey: string, column: string, state: MyLingoProject = project): boolean {
     if (column === TAGS_COLUMN) return true;
     const entry = state.entries.find((item) => item.key === entryKey);
     return Boolean(entry && cellParticipates(entry, column, state.view.forceMissingCells));
@@ -1132,14 +1148,14 @@ export function App() {
   }
 
   async function openFiles() {
-    if (window.lingrid) {
-      const files = await window.lingrid.openFiles(["po", "pot", "csv"]);
+    if (window.myLingo) {
+      const files = await window.myLingo.openFiles(["po", "pot", "csv"]);
       importDocuments(files);
     } else if (window.showOpenFilePicker) {
       try {
         const handles = await window.showOpenFilePicker({
           multiple: true,
-          types: [{ description: "Lingrid files", accept: { "text/plain": [".po", ".pot", ".csv"] } }],
+          types: [{ description: "myLingo files", accept: { "text/plain": [".po", ".pot", ".csv"] } }],
         });
         const files = await Promise.all(handles.map(async (fileHandle) => {
           const file = await fileHandle.getFile();
@@ -1155,14 +1171,16 @@ export function App() {
   }
 
   async function openProject() {
-    appendDiagnostic("project.open.start", { electron: Boolean(window.lingrid) });
-    if (window.lingrid) {
-      const [projectFile] = await window.lingrid.openFiles(["json"]);
+    appendDiagnostic("project.open.start", { electron: Boolean(window.myLingo) });
+    if (window.myLingo) {
+      const [projectFile] = await window.myLingo.openFiles(["json"]);
       if (!projectFile) return;
+      const legacyProject = projectFile.name.toLowerCase() === LEGACY_PROJECT_FILE_NAME;
       const config = JSON.parse(projectFile.content) as ProjectConfig;
       appendDiagnostic("project.open.json", { path: projectFile.path, configuredFiles: config.files?.length ?? 0 });
-      const { files, missingPaths } = await window.lingrid.readFiles((config.files ?? []).map((file) => file.path));
-      restoreProject(config, files, projectFile.path, undefined, missingPaths);
+      const { files, missingPaths } = await window.myLingo.readFiles((config.files ?? []).map((file) => file.path));
+      restoreProject(config, files, legacyProject ? undefined : projectFile.path, undefined, missingPaths);
+      if (legacyProject) setNotice(`Opened legacy ${LEGACY_PROJECT_FILE_NAME}; the next project save will create ${PROJECT_FILE_NAME}.`);
       return;
     }
 
@@ -1172,12 +1190,18 @@ export function App() {
         const directoryHandle = await window.showDirectoryPicker({ mode: "readwrite" });
         appendDiagnostic("project.open.directory", { name: directoryHandle.name });
 
-        // Look for .lingrid.json in the selected folder
+        // Prefer the current project file, then migrate the legacy file on the next save.
         let projectFileHandle: FileSystemFileHandle | undefined;
+        let legacyProject = false;
         try {
-          projectFileHandle = await directoryHandle.getFileHandle(".lingrid.json");
+          projectFileHandle = await directoryHandle.getFileHandle(PROJECT_FILE_NAME);
         } catch {
-          // .lingrid.json does not exist
+          try {
+            projectFileHandle = await directoryHandle.getFileHandle(LEGACY_PROJECT_FILE_NAME);
+            legacyProject = true;
+          } catch {
+            // Neither current nor legacy project file exists.
+          }
         }
 
         if (projectFileHandle) {
@@ -1185,10 +1209,11 @@ export function App() {
           const config = JSON.parse(await projectFile.text()) as ProjectConfig;
           appendDiagnostic("project.open.json", { name: projectFile.name, bytes: projectFile.size, modifiedAt: projectFile.lastModified, configuredFiles: config.files?.length ?? 0 });
           const { files, missingPaths } = await readBrowserProjectDirectory(directoryHandle, config);
-          restoreProject(config, files, undefined, projectFileHandle, missingPaths, directoryHandle);
+          restoreProject(config, files, undefined, legacyProject ? undefined : projectFileHandle, missingPaths, directoryHandle);
+          if (legacyProject) setNotice(`Opened legacy ${LEGACY_PROJECT_FILE_NAME}; the next project save will create ${PROJECT_FILE_NAME}.`);
         } else {
           // No project file found: import source files as a new project
-          setNotice("No .lingrid.json found. Importing source files from the selected folder.");
+          setNotice(`No ${PROJECT_FILE_NAME} found. Importing source files from the selected folder.`);
           const { files } = await readBrowserProjectDirectory(directoryHandle, { files: [] });
           if (files.length) {
             importDocuments(files);
@@ -1211,18 +1236,20 @@ export function App() {
     }
     try {
       const [projectFileHandle] = await window.showOpenFilePicker({
-        types: [{ description: "Lingrid project", accept: { "application/json": [".json"] } }],
+        types: [{ description: "myLingo project", accept: { "application/json": [".json"] } }],
       });
       if (!projectFileHandle) return;
       const projectFile = await projectFileHandle.getFile();
+      const legacyProject = projectFile.name.toLowerCase() === LEGACY_PROJECT_FILE_NAME;
       const config = JSON.parse(await projectFile.text()) as ProjectConfig;
       appendDiagnostic("project.open.json", { name: projectFile.name, bytes: projectFile.size, modifiedAt: projectFile.lastModified, configuredFiles: config.files?.length ?? 0 });
       const sourceHandles = await window.showOpenFilePicker({
         multiple: true,
-        types: [{ description: "Lingrid source files", accept: { "text/plain": [".po", ".pot", ".csv"] } }],
+        types: [{ description: "myLingo source files", accept: { "text/plain": [".po", ".pot", ".csv"] } }],
       });
       const files = await readBrowserSourceFiles(sourceHandles);
-      restoreProject(config, files, undefined, projectFileHandle);
+      restoreProject(config, files, undefined, legacyProject ? undefined : projectFileHandle);
+      if (legacyProject) setNotice(`Opened legacy ${LEGACY_PROJECT_FILE_NAME}; the next project save will create ${PROJECT_FILE_NAME}.`);
     } catch (error) {
       appendDiagnostic("project.open.error", errorDetails(error));
       if ((error as DOMException).name !== "AbortError") setNotice("Could not open the project JSON.");
@@ -1450,7 +1477,7 @@ export function App() {
   async function runSaveSources() {
     const entries = applyCellDrafts(project.entries);
     let documents = [...project.documents];
-    appendDiagnostic("save.start", { documents: documents.length, changedCells: changedCount, drafts: Object.keys(cellDrafts).length, electron: Boolean(window.lingrid) });
+    appendDiagnostic("save.start", { documents: documents.length, changedCells: changedCount, drafts: Object.keys(cellDrafts).length, electron: Boolean(window.myLingo) });
     try {
       if (!documents.some((document) => document.writable)) {
         throw new Error("No writable PO or CSV source file is open.");
@@ -1471,7 +1498,7 @@ export function App() {
         modifiedAt: document.modifiedAt,
       }));
       const downloadOnly = serialized.filter(({ document, raw }) =>
-        document.writable && raw !== document.raw && !((window.lingrid && document.path) || document.fileHandle));
+        document.writable && raw !== document.raw && !((window.myLingo && document.path) || document.fileHandle));
       if (downloadOnly.length) {
         downloadOnly.forEach(({ document, raw }) => download(document.name, raw));
         setSourceSaveStatus({ kind: "download", fileCount: downloadOnly.length });
@@ -1485,8 +1512,8 @@ export function App() {
         if (raw === document.raw) continue;
         const label = sourceDocumentLabel(document);
         let modifiedAt = document.modifiedAt;
-        if (window.lingrid && document.path) {
-          modifiedAt = await window.lingrid.writeFile(document.path, raw, document.modifiedAt);
+        if (window.myLingo && document.path) {
+          modifiedAt = await window.myLingo.writeFile(document.path, raw, document.modifiedAt);
         } else if (document.fileHandle) {
           modifiedAt = await writeBrowserFile(document.fileHandle, raw, document.modifiedAt, label, appendDiagnostic);
         } else {
@@ -1537,17 +1564,17 @@ export function App() {
 
   async function saveProject(asNew = false) {
     const content = serializeProject(project);
-    if (window.lingrid) {
+    if (window.myLingo) {
       const path = asNew || !project.projectPath
-        ? await window.lingrid.saveAs(".lingrid.json", content)
-        : (await window.lingrid.writeFile(project.projectPath, content), project.projectPath);
+        ? await window.myLingo.saveAs(PROJECT_FILE_NAME, content)
+        : (await window.myLingo.writeFile(project.projectPath, content), project.projectPath);
       if (!path) return;
       patchProject({ projectPath: path });
     } else if (project.directoryHandle) {
       // FILE-B: save directly to authorized directory
       try {
         const projectFileHandle = asNew || !project.projectFileHandle
-          ? await project.directoryHandle.getFileHandle(".lingrid.json", { create: true })
+          ? await project.directoryHandle.getFileHandle(PROJECT_FILE_NAME, { create: true })
           : project.projectFileHandle;
         const writable = await projectFileHandle.createWritable();
         await writable.write(content);
@@ -1560,13 +1587,13 @@ export function App() {
       }
     } else if (window.showSaveFilePicker) {
       const projectFileHandle = asNew || !project.projectFileHandle
-        ? await window.showSaveFilePicker({ suggestedName: ".lingrid.json", types: [{ description: "Lingrid project", accept: { "application/json": [".json"] } }] })
+        ? await window.showSaveFilePicker({ suggestedName: PROJECT_FILE_NAME, types: [{ description: "myLingo project", accept: { "application/json": [".json"] } }] })
         : project.projectFileHandle;
       const writable = await projectFileHandle.createWritable();
       await writable.write(content);
       await writable.close();
       patchProject({ projectFileHandle });
-    } else download(".lingrid.json", content);
+    } else download(PROJECT_FILE_NAME, content);
     setSavedProjectSnapshot(content);
     setNotice("Project state saved");
     const updatedRecent = addRecentProject(recentProjects, project, project.projectPath ?? undefined);
@@ -1582,7 +1609,7 @@ export function App() {
     if (!document) return setNotice(`Select a ${csvProject ? "CSV" : "PO"} source first`);
     const entries = applyCellDrafts(project.entries);
     const content = document.type === "csv" ? updateCsv(document, entries) : updatePo(document, entries);
-    if (window.lingrid) await window.lingrid.saveAs(document.name, content);
+    if (window.myLingo) await window.myLingo.saveAs(document.name, content);
     else if (window.showSaveFilePicker) {
       const fileHandle = await window.showSaveFilePicker({ suggestedName: document.name });
       const writable = await fileHandle.createWritable();
@@ -2080,16 +2107,18 @@ export function App() {
   const currentAiUsageLabel = aiUsageLabel(ai);
 
   async function handleOpenRecent(recent: RecentProject) {
-    if (window.lingrid) {
+    if (window.myLingo) {
       try {
-        const { files: [projectFile], missingPaths: projectMissing } = await window.lingrid.readFiles([recent.path]);
+        const { files: [projectFile], missingPaths: projectMissing } = await window.myLingo.readFiles([recent.path]);
         if (!projectFile || projectMissing.length) {
           setNotice(`Could not open recent project: ${recent.name}`);
           return;
         }
+        const legacyProject = projectFile.name.toLowerCase() === LEGACY_PROJECT_FILE_NAME;
         const config = JSON.parse(projectFile.content) as ProjectConfig;
-        const { files, missingPaths } = await window.lingrid.readFiles((config.files ?? []).map((file) => file.path));
-        restoreProject(config, files, recent.path, undefined, missingPaths);
+        const { files, missingPaths } = await window.myLingo.readFiles((config.files ?? []).map((file) => file.path));
+        restoreProject(config, files, legacyProject ? undefined : recent.path, undefined, missingPaths);
+        if (legacyProject) setNotice(`Opened legacy ${LEGACY_PROJECT_FILE_NAME}; the next project save will create ${PROJECT_FILE_NAME}.`);
       } catch (error) {
         setNotice(`Could not open recent project: ${recent.name}`);
       }
@@ -2138,7 +2167,7 @@ export function App() {
   return (
     <main className="app-shell" onKeyDown={handleUndoRedoShortcut}>
       <header className="topbar" onMouseDown={clearMatrixSelectionFromNonCell}>
-        <div className="brand"><div className="brand-mark"><Languages size={16} /></div><strong>Lingrid</strong><span>灵译</span></div>
+        <div className="brand"><div className="brand-mark"><Languages size={16} /></div><strong>myLingo</strong></div>
         <nav className="toolbar">
           <Button onClick={openFiles}><FolderOpen size={15} />{t.open}</Button>
           <Button onClick={openFiles}><FilePlus2 size={15} />{t.importCsv}</Button>
@@ -2335,7 +2364,7 @@ export function App() {
           </section>
         </aside>
       </div>
-      <footer className="statusbar"><span><i className={saveStatusClass} />{saveStatusText}</span><span className={aiBatchStatus.logColor ? `batch-log-${aiBatchStatus.logColor}` : ""}>{aiBatchStatus.kind !== "idle" ? aiBatchStatus.message : notice}</span><span>{project.documents.length} {t.sourceFiles} · v0.1.1</span></footer>
+      <footer className="statusbar"><span><i className={saveStatusClass} />{saveStatusText}</span><span className={aiBatchStatus.logColor ? `batch-log-${aiBatchStatus.logColor}` : ""}>{aiBatchStatus.kind !== "idle" ? aiBatchStatus.message : notice}</span><span>{project.documents.length} {t.sourceFiles} · v{PRODUCT_VERSION}</span></footer>
 
       <input hidden multiple ref={fileInput} type="file" accept=".po,.pot,.csv" onChange={async (event) => { const files = await Promise.all([...event.target.files ?? []].map(async (file) => ({ name: file.name, path: "", content: await file.text() }))); event.target.value = ""; if (pendingProjectConfig.current) { const config = pendingProjectConfig.current; pendingProjectConfig.current = null; restoreProject(config, files); } else importDocuments(files); }} />
       <input hidden ref={projectInput} type="file" accept=".json" onChange={async (event) => { const [file] = [...event.target.files ?? []]; event.target.value = ""; if (!file) return; try { pendingProjectConfig.current = JSON.parse(await file.text()) as ProjectConfig; setNotice("Project JSON loaded. Select its PO/CSV source files to finish reopening."); fileInput.current?.click(); } catch { setNotice("Could not parse the selected project JSON."); } }} />

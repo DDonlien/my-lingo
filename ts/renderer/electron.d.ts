@@ -18,7 +18,7 @@ declare global {
   }
 
   interface Window {
-    lingrid?: {
+    myLingo?: {
       openFiles(extensions: string[]): Promise<Array<{ path: string; name: string; content: string; modifiedAt: number }>>;
       readFiles(paths: string[]): Promise<{
         files: Array<{ path: string; name: string; content: string; modifiedAt: number }>;

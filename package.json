@@ -1,6 +1,6 @@
 {
-  "name": "lingrid",
-  "version": "0.1.1",
+  "name": "my-lingo",
+  "version": "0.1.2",
   "description": "Lightweight local-first PO/CSV multilingual matrix editor.",
   "author": "ddonlien",
   "private": true,
@@ -21,8 +21,8 @@
   },
   "main": "dist-electron/main/main.js",
   "build": {
-    "appId": "dev.lingrid.app",
-    "productName": "Lingrid",
+    "appId": "com.ddonlien.my-lingo",
+    "productName": "myLingo",
     "directories": {
       "output": "release"
     },

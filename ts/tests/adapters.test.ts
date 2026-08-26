@@ -3,8 +3,8 @@ import { describe, expect, it, vi } from "vitest";
 import { defaultCsvMapping, parseCsv, updateCsv } from "../adapters/csv";
 import { detectPoLanguage, parsePo, updatePo } from "../adapters/po";
 import { verifyBrowserFileWritable, writeBrowserFile } from "../core/browser-files";
-import { adjacentCell, applyTranslationDrafts, canImportSourceTypes, createProject, EMPTY_TAG_FILTER, filteredEntries, mergeEntries, moveColumn, nextSortMode, normalizeProjectView, pathsReferToSameFile, projectStats, reorderColumn, serializeProject, sortedEntries } from "../core/project";
-import type { LingridProject, SourceDocument, TranslationEntry } from "../core/types";
+import { adjacentCell, applyTranslationDrafts, canImportSourceTypes, clearRecentProjects, createProject, EMPTY_TAG_FILTER, filteredEntries, LEGACY_RECENT_PROJECTS_KEY, loadRecentProjects, mergeEntries, moveColumn, nextSortMode, normalizeProjectView, pathsReferToSameFile, projectStats, RECENT_PROJECTS_KEY, reorderColumn, saveRecentProjects, serializeProject, sortedEntries } from "../core/project";
+import type { MyLingoProject, SourceDocument, TranslationEntry } from "../core/types";
 
 function fixture(name: string): string {
   return readFileSync(new URL(`../../fixtures/${name}`, import.meta.url), "utf8");
@@ -161,7 +161,7 @@ describe("Browser source saving", () => {
     const file = fileHandle();
     await expect(verifyBrowserFileWritable(file.handle, 1, "en/GAME.po")).resolves.toBeUndefined();
     expect(file.content()).toBe("before");
-    await expect(verifyBrowserFileWritable(file.handle, 99, "en/GAME.po")).rejects.toThrow("File changed outside Lingrid: en/GAME.po");
+    await expect(verifyBrowserFileWritable(file.handle, 99, "en/GAME.po")).rejects.toThrow("File changed outside myLingo: en/GAME.po");
     expect(file.content()).toBe("before");
   });
 });
@@ -240,6 +240,26 @@ describe("Project state", () => {
     expect(canImportSourceTypes([], ["po", "csv"])).toBe(false);
   });
 
+  it("migrates recent projects from the legacy Lingrid storage key", () => {
+    const data: Record<string, string> = {
+      [LEGACY_RECENT_PROJECTS_KEY]: JSON.stringify([{ path: "/tmp/game/.lingrid.json", name: "game", lastAccessed: 1, sourceCount: 2, languages: ["en"] }]),
+    };
+    const storage = {
+      getItem: (key: string) => data[key] ?? null,
+      setItem: (key: string, value: string) => { data[key] = value; },
+      removeItem: (key: string) => { delete data[key]; },
+    };
+    expect(loadRecentProjects(storage)).toHaveLength(1);
+    expect(data[RECENT_PROJECTS_KEY]).toContain("game");
+    expect(data[LEGACY_RECENT_PROJECTS_KEY]).toBeUndefined();
+    saveRecentProjects([], storage);
+    expect(data[RECENT_PROJECTS_KEY]).toBe("[]");
+    data[LEGACY_RECENT_PROJECTS_KEY] = "[]";
+    clearRecentProjects(storage);
+    expect(data[RECENT_PROJECTS_KEY]).toBeUndefined();
+    expect(data[LEGACY_RECENT_PROJECTS_KEY]).toBeUndefined();
+  });
+
   it("stores file metadata and tags without translation bodies", () => {
     const document = po("zh-CN.po");
     const entries = parsePo(document);
@@ -316,7 +336,7 @@ describe("Project state", () => {
       parsePo(inlinePo("zh-CN", [{ source: "Shared", value: "共享" }, { source: "Missing translation", value: "" }])),
       parsePo(inlinePo("ja", [{ source: "Shared", value: "共有" }, { source: "Missing translation", value: "不足" }, { source: "Only in ja", value: "日本語のみ" }])),
     );
-    const project: LingridProject = { version: "0.1", documents: [], entries, columnOrder: ["zh-CN", "ja"], columnLabels: {}, columnWidths: {}, view: { search: "", completion: "incomplete", completionLanguages: ["zh-CN"], editStatus: ["never-edited", "changed", "unchanged"], tags: [], wordTags: [], wordTagLanguages: [] } };
+    const project: MyLingoProject = { version: "0.1", documents: [], entries, columnOrder: ["zh-CN", "ja"], columnLabels: {}, columnWidths: {}, view: { search: "", completion: "incomplete", completionLanguages: ["zh-CN"], editStatus: ["never-edited", "changed", "unchanged"], tags: [], wordTags: [], wordTagLanguages: [] } };
     expect(projectStats(project).languages["zh-CN"].total).toBe(2);
     expect(filteredEntries(project).map((entry) => entry.source)).toEqual(["Missing translation"]);
     project.view.forceMissingCells = true;
@@ -328,7 +348,7 @@ describe("Project state", () => {
     const entries = mergeEntries(parsePo(po("zh-CN.po")), parsePo(po("ja.po")));
     entries[0].tags = ["#ui"];
     entries[1].tags = ["#review"];
-    const project: LingridProject = { version: "0.1", documents: [], entries, columnOrder: ["zh-CN", "ja"], columnLabels: {}, columnWidths: {}, view: { search: "", completion: "incomplete", completionLanguages: ["ja"], editStatus: ["never-edited", "changed", "unchanged"], tags: ["#ui", "#review"], wordTags: [], wordTagLanguages: [] } };
+    const project: MyLingoProject = { version: "0.1", documents: [], entries, columnOrder: ["zh-CN", "ja"], columnLabels: {}, columnWidths: {}, view: { search: "", completion: "incomplete", completionLanguages: ["ja"], editStatus: ["never-edited", "changed", "unchanged"], tags: ["#ui", "#review"], wordTags: [], wordTagLanguages: [] } };
     expect(filteredEntries(project).map((entry) => entry.source)).toEqual(["Continue"]);
     project.view.completionLanguages = ["zh-CN"];
     expect(filteredEntries(project).map((entry) => entry.source)).toEqual(["Continue"]);

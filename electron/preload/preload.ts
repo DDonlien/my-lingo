@@ -1,6 +1,6 @@
 import { contextBridge, ipcRenderer } from "electron";
 
-contextBridge.exposeInMainWorld("lingrid", {
+contextBridge.exposeInMainWorld("myLingo", {
   openFiles: (extensions: string[]) => ipcRenderer.invoke("files:open", extensions),
   readFiles: (paths: string[]) => ipcRenderer.invoke("files:read-many", paths),
   writeFile: (path: string, content: string, expectedModifiedAt?: number) => ipcRenderer.invoke("files:write", path, content, expectedModifiedAt),

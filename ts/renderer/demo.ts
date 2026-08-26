@@ -1,4 +1,4 @@
-import type { LingridProject } from "../core/types";
+import type { MyLingoProject } from "../core/types";
 import { createProject } from "../core/project";
 
 export type DemoSourceLanguage = "zh-CN" | "en" | "ja";
@@ -196,7 +196,7 @@ const DEMO_ROWS: DemoRow[] = [
   },
 ];
 
-export function createDemoProject(sourceLanguage: DemoSourceLanguage = "en"): LingridProject {
+export function createDemoProject(sourceLanguage: DemoSourceLanguage = "en"): MyLingoProject {
   const project = createProject();
   const columnOrder = DEMO_TRANSLATION_LANGUAGES.filter((language) => language !== sourceLanguage);
   project.columnOrder = columnOrder;

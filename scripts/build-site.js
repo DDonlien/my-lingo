@@ -6,7 +6,7 @@ const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
 /**
- * Build script for Lingrid marketing site.
+ * Build script for myLingo marketing site.
  * Copies website/ into dist/ (GitHub Actions) or dist-site/ (local).
  * In CI, this produces a combined output where:
  *   dist/           = website (landing page)

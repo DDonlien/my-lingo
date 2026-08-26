@@ -1,6 +1,6 @@
-# Lingrid 灵译需求追踪
+# myLingo 需求追踪
 
-本文件记录 Lingrid 灵译的需求、任务与验收状态。使用 Obsidian 原生友好的 Markdown checkbox、层级缩进、稳定 ID 和少量标签。
+本文件记录 myLingo 的需求、任务与验收状态。使用 Obsidian 原生友好的 Markdown checkbox、层级缩进、稳定 ID 和少量标签。
 
 ## 阶段 0：项目协作与产品定义
 
@@ -9,7 +9,7 @@
 - [x] [DOC-A-000] 建立项目协作文档 #epic #docs #P0
   - [x] [DOC-A-001] 创建根目录 `AGENTS.md`
     - [x] 写入标准协作规范
-    - [x] 补充 Lingrid 灵译项目专用内容
+    - [x] 补充 myLingo 项目专用内容
   - [x] [DOC-A-002] 创建根目录 `README.md`
     - [x] 说明项目是什么
     - [x] 说明 Phase 1（v0.1）当前能力与非目标范围
@@ -35,7 +35,7 @@
 ### FOUND-A：产品边界
 
 - [x] [FOUND-A-000] 定义 Phase 1（v0.1）产品方向 #epic #P0
-  - [x] [FOUND-A-001] 产品命名为 `Lingrid 灵译`
+  - [x] [FOUND-A-001] 产品命名为 `myLingo`
   - [x] [FOUND-A-002] 定义产品定位
     - [x] 轻量、现代、本地优先
     - [x] PO / CSV 多语言并排编辑器
@@ -51,6 +51,13 @@
     - [x] 不做复杂 QA
     - [x] 不做翻译记忆
     - [x] 不做 Git 集成
+  - [x] [FOUND-A-005] 将项目与产品统一到 `my` 系列命名 #brand #P0
+    - [x] 仓库、目录、npm package 与 GitHub Pages slug 使用 `my-lingo`
+    - [x] 应用、安装包、网页、PWA、文档与诊断信息使用产品名 `myLingo`
+    - [x] Electron app ID 使用 `com.ddonlien.my-lingo`
+    - [x] TypeScript 项目类型与 Electron preload bridge 使用 `MyLingoProject` / `window.myLingo`
+    - [x] 版本由 `0.1.1` 升级为 `0.1.2`，并同步 package 与 UI 展示
+    - [x] 保留原 Lingrid 本地偏好、最近项目与 `.lingrid.json` 项目文件的兼容迁移
 
 ## Phase 1：v0.1 最小可用编辑器
 
@@ -161,7 +168,7 @@
     - [x] 外部修改时提示或阻止覆盖
     - [x] 保存失败时保留 changed 状态
     - [x] 左下状态栏持续显示最近一次 PO/CSV 保存成功或失败；失败时使用错误色并展示具体原因
-    - [x] 保存诊断日志区分重入复用事件，避免把 Lingrid 自己上一轮写入后的 `modifiedAt` 变化误报为外部修改
+    - [x] 保存诊断日志区分重入复用事件，避免把 myLingo 自己上一轮写入后的 `modifiedAt` 变化误报为外部修改
   - [x] [FILE-A-011] 配置语言列
     - [x] 支持调整语言列顺序
     - [x] 支持为导入后的语言列设置显示名称
@@ -563,7 +570,7 @@
   - [ ] [EDIT-B-001] 项目打开时检测 PO 文件外部更新
     - [ ] 对比上一次关闭时记录的 PO 文件状态（如 hash、modified time、或条目级指纹）与当前磁盘上 PO 文件的实际内容
     - [ ] 识别出新增或变更的词条：包括全新 source（`msgctxt + msgid + msgid_plural` 组合）、同一 source 的新增语言译文、以及已有译文的 source 其译文内容被外部修改
-    - [ ] 游戏引擎或其他工具在外部修改 PO 文件后，Lingrid 重新打开项目时应能识别这些变更
+    - [ ] 游戏引擎或其他工具在外部修改 PO 文件后，myLingo 重新打开项目时应能识别这些变更
   - [ ] [EDIT-B-002] 运行时外部修改检测
     - [ ] 项目保持打开状态时，若 PO 文件在磁盘上被外部修改，应能识别出新增/变更的词条
     - [ ] 可通过文件系统监听、定时轮询、或保存前/聚焦时检测等方式实现
@@ -575,9 +582,9 @@
     - [ ] "新增"与"已修改"（当前会话用户手动修改未保存）互斥：同一词条不可能同时标记为新增和已修改
     - [ ] 用户手动编辑一个被标记为新增的词条后，该词条从"新增"状态转为"已修改"状态
   - [ ] [EDIT-B-006] **明确区分"新增"与"从未修改"**
-    - [ ] "新增"（EDIT-B）是**外部 PO 文件变更检测**的结果：表示"相对于 Lingrid 上一次已知状态，外部世界新增/修改了词条"。它的触发源是**外部文件变化**（游戏引擎、其他编辑器、Git pull 等）。
-    - [ ] "从未修改"（EDIT-A）是**用户在 Lingrid 内的编辑历史追踪**：表示"用户自导入以来是否在这个单元格上做过任何手动编辑"。它的触发源是**用户行为**，一旦编辑过就永久标记为"已编辑过"。
-    - [ ] 两者**概念正交、可以同时存在**：一个词条完全可以同时是"外部新增的"（新增）且"用户从未在 Lingrid 中编辑过"（从未修改）。
+    - [ ] "新增"（EDIT-B）是**外部 PO 文件变更检测**的结果：表示"相对于 myLingo 上一次已知状态，外部世界新增/修改了词条"。它的触发源是**外部文件变化**（游戏引擎、其他编辑器、Git pull 等）。
+    - [ ] "从未修改"（EDIT-A）是**用户在 myLingo 内的编辑历史追踪**：表示"用户自导入以来是否在这个单元格上做过任何手动编辑"。它的触发源是**用户行为**，一旦编辑过就永久标记为"已编辑过"。
+    - [ ] 两者**概念正交、可以同时存在**：一个词条完全可以同时是"外部新增的"（新增）且"用户从未在 myLingo 中编辑过"（从未修改）。
     - [ ] 两者**视觉标记独立**："新增"使用绿色标点（EDIT-B-003），"从未修改"使用独立角标（EDIT-A-011），不得混用同一视觉元素。
     - [ ] 两者**筛选逻辑独立**："修改状态"筛选（EDIT-A-022）中的"从未修改"与"已修改"/"未修改"是用户编辑历史维度；"新增"（EDIT-B-004）是外部变更维度。实现时不得将"新增"词条错误归类为"从未修改"或"已修改"。
     - [ ] 两者**持久化位置独立**："从未修改"状态随单元格编辑历史持久化（EDIT-A-001），"新增"状态随外部变更快照持久化（EDIT-B-005）。
@@ -594,10 +601,11 @@
 ### FILE-B：隐藏式项目文件与文件夹一站式加载 #epic #P1.5
 
 - [x] [FILE-B-000] 隐藏式项目管理与合并授权自动加载 #feature #P1.5
-  - [x] [FILE-B-001] 项目配置文件改名/重构为隐藏文件样式（如 `.lingrid.json`，存储于目标翻译文件夹中）
-  - [x] [FILE-B-002] 合并文件夹选择与目录授权：加载项目时直接要求选择并一次性以 `readwrite` 权限授权目标项目文件夹，应用自动在根目录下搜寻并读取 `.lingrid.json` 配置文件，匹配成功即直接载入项目
-  - [x] [FILE-B-003] 新建项目或保存项目时，在目标已授权目录根节点下自动静默写入/更新 `.lingrid.json` 配置文件
+  - [x] [FILE-B-001] 项目配置文件使用隐藏文件样式 `.my-lingo.json`，存储于目标翻译文件夹中
+  - [x] [FILE-B-002] 合并文件夹选择与目录授权：加载项目时直接要求选择并一次性以 `readwrite` 权限授权目标项目文件夹，应用自动在根目录下搜寻并读取 `.my-lingo.json` 配置文件，匹配成功即直接载入项目
+  - [x] [FILE-B-003] 新建项目或保存项目时，在目标已授权目录根节点下自动静默写入/更新 `.my-lingo.json` 配置文件
   - [x] [FILE-B-004] 保留完整的目录授权状态与句柄引用，以便在快速打开历史（已有项目）时能够自动重用句柄或引导顺畅授权
+  - [x] [FILE-B-005] 兼容读取旧 `.lingrid.json`，并在下一次保存时写入新的 `.my-lingo.json`
 
 ### FILE-C：最近项目历史记录列表 #epic #P1.5
 
@@ -618,15 +626,16 @@
     - [x] 空状态：当没有历史记录时，下拉菜单显示"暂无最近项目"提示
     - [x] 失效项目处理：若记录中的项目路径已不存在或不可访问，打开时提示用户并询问是否从列表中移除该记录
     - [x] 浏览器版与桌面版共用同一套 localStorage 历史记录格式，但路径语义各自兼容（浏览器存目录句柄标识或路径，桌面版存绝对路径）
+  - [x] [FILE-C-004] 品牌更名后将旧 `lingrid-*` localStorage 偏好迁移到 `my-lingo-*`，不丢失界面语言、AI 设置和最近项目
 
 ## Phase 2：品牌网站与产品落地页 #P2
 
-### SITE-A：Lingrid 介绍网站（Marketing Site / Landing Page）
+### SITE-A：myLingo 介绍网站（Marketing Site / Landing Page）
 
 - [x] [SITE-A-000] 搭建独立介绍网站 #epic #P2
   - [x] [SITE-A-001] 创建 `website/` 目录作为静态站点源码根目录
     - [x] 使用纯静态 HTML + CSS + JS，不引入额外构建工具，保持轻量可维护
-    - [x] 视觉风格沿用 Lingrid 品牌：蓝紫主色 `#635BFF`、深色背景 `#1F1742`、现代极简、参考 Linear 气质
+    - [x] 视觉风格沿用 myLingo 品牌：蓝紫主色 `#635BFF`、深色背景 `#1F1742`、现代极简、参考 Linear 气质
     - [x] 响应式布局，适配桌面端与移动端
   - [x] [SITE-A-002] 网站核心区块
     - [x] 7 个卖点纵向平铺：矩阵编辑、导入合并、PO 元数据保真、本地优先、AI 建议、标签系统、批量编辑
@@ -657,8 +666,8 @@
     - [x] 新增 `npm run build:site`：将 `website/` 内容处理并输出到 `dist-site/` 或合并到 `dist/`
     - [x] 网站构建流程复制必要品牌资产（favicon、图标）到输出目录
   - [x] [SITE-B-003] GitHub Actions 部署策略（二选一或组合）
-    - [x] 方案 A：应用与网站共存——`dist/` 根目录放网站入口，`dist/app/` 子目录放应用；Vite 应用 base 改为 `/lingrid/app/`，网站首页提供 "Launch App" 入口跳转
-    - [ ] 方案 B：独立分支/仓库部署——网站单独部署到 `ddonlien.github.io` 根域名，应用保持 `/lingrid/` 子路径不变
+    - [x] 方案 A：应用与网站共存——`dist/` 根目录放网站入口，`dist/app/` 子目录放应用；Vite 应用 base 使用 `/my-lingo/app/`，网站首页提供 "Launch App" 入口跳转
+    - [ ] 方案 B：独立分支/仓库部署——网站单独部署到 `ddonlien.github.io` 根域名，应用保持 `/my-lingo/` 子路径不变
     - [x] 选定方案后更新 `.github/workflows/deploy-pages.yml` 和 `ts/vite.config.ts`
   - [x] [SITE-B-004] 本地预览网站
     - [x] 新增 `npm run dev:site`：使用轻量静态服务器（如 `npx serve website/` 或 Vite 的 `publicDir` 模式）本地预览网站
@@ -681,7 +690,7 @@
 - [ ] [BACK-A-002] 支持术语库 #P2
 - [x] [BACK-A-009] 完成 Electron 桌面封装与安装包发布 #P2
   - [x] 定义桌面安装包构建命令：`npm run package:electron` 与 `npm run dist:electron`
-  - [x] 验证桌面文件对话框、受控读写和项目恢复：已通过 Electron main/preload 受控 API 编译与 unpacked 应用打包验证，实际交互可用 `npm run dev:electron` 或 `release/mac-arm64/Lingrid.app` 复测
+  - [x] 验证桌面文件对话框、受控读写和项目恢复：已通过 Electron main/preload 受控 API 编译与 unpacked 应用打包验证，实际交互可用 `npm run dev:electron` 或 `release/mac-arm64/myLingo.app` 复测
   - [x] 定义桌面版本发布流程：先运行 `npm test`、`npm run build`，再运行 `npm run dist:electron` 生成 `release/` 产物
   - [x] 补充应用图标：原始 1254x1254 源图存于 `assets/icon-source.png`，`assets/icon-{16,32,48,64,128,180,192,256,512,1024}.png` 覆盖常用尺寸，`package.json` 的 `build.icon` 指向 1024 版本，electron-builder 自动为各平台生成 .icns / .ico
   - [ ] 补充 Developer ID 证书与 notarization 配置（macOS 正式发布前）
@@ -710,7 +719,7 @@
 - [x] [RELEASE-A-001] 使用 GitHub Actions 部署 GitHub Pages #P0
   - [x] 推送 `main` 时执行测试与构建
   - [x] 使用 Pages artifact 发布 `dist/`
-  - [x] Vite 在 GitHub Actions 中使用 `/lingrid/` 子路径
+  - [x] Vite 在 GitHub Actions 中使用 `/my-lingo/app/` 子路径
 
 ## 持续约束
 

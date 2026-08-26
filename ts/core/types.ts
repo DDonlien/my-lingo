@@ -54,7 +54,7 @@ export interface ProjectView {
 
 export type TranslationSortMode = "incomplete-first" | "complete-first" | "content-asc" | "content-desc";
 
-export interface LingridProject {
+export interface MyLingoProject {
   version: "0.1";
   documents: SourceDocument[];
   entries: TranslationEntry[];

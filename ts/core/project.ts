@@ -1,4 +1,4 @@
-import type { DocumentType, LingridProject, ProjectView, RecentProject, TranslationEntry, TranslationSortMode } from "./types";
+import type { DocumentType, MyLingoProject, ProjectView, RecentProject, TranslationEntry, TranslationSortMode } from "./types";
 
 export const DEFAULT_VIEW: ProjectView = {
   search: "",
@@ -15,7 +15,8 @@ export const EDIT_STATUS_NEVER_EDITED = "never-edited";
 export const EDIT_STATUS_CHANGED = "changed";
 export const EDIT_STATUS_UNCHANGED = "unchanged";
 export const EDIT_STATUS_OPTIONS = [EDIT_STATUS_NEVER_EDITED, EDIT_STATUS_CHANGED, EDIT_STATUS_UNCHANGED];
-export const RECENT_PROJECTS_KEY = "lingrid-recent-projects";
+export const RECENT_PROJECTS_KEY = "my-lingo-recent-projects";
+export const LEGACY_RECENT_PROJECTS_KEY = "lingrid-recent-projects";
 export const MAX_RECENT_PROJECTS = 10;
 
 export function normalizeProjectView(view?: Partial<ProjectView> & { tag?: string; changedOnly?: boolean }): ProjectView {
@@ -32,7 +33,7 @@ export function normalizeProjectView(view?: Partial<ProjectView> & { tag?: strin
   };
 }
 
-export function createProject(): LingridProject {
+export function createProject(): MyLingoProject {
   return {
     version: "0.1",
     documents: [],
@@ -142,7 +143,7 @@ export function cellParticipates(entry: TranslationEntry, language: string, forc
   return forceMissingCells || Boolean(entry.translations[language]);
 }
 
-export function filteredEntries(project: LingridProject): TranslationEntry[] {
+export function filteredEntries(project: MyLingoProject): TranslationEntry[] {
   const query = project.view.search.trim().toLowerCase();
   const editStatus = project.view.editStatus?.length ? project.view.editStatus : EDIT_STATUS_OPTIONS;
   return project.entries.filter((entry) => {
@@ -219,7 +220,7 @@ export function nextSortMode(mode?: TranslationSortMode): TranslationSortMode {
   return "incomplete-first";
 }
 
-export function serializeProject(project: LingridProject): string {
+export function serializeProject(project: MyLingoProject): string {
   const tags = Object.fromEntries(
     project.entries.filter((entry) => entry.tags.length).map((entry) => [entry.key, entry.tags]),
   );
@@ -259,7 +260,7 @@ export function serializeProject(project: LingridProject): string {
   );
 }
 
-export function projectStats(project: LingridProject) {
+export function projectStats(project: MyLingoProject) {
   const languages = Object.fromEntries(
     project.columnOrder.map((language) => {
       const participating = project.entries.filter((entry) => cellParticipates(entry, language, project.view.forceMissingCells));
@@ -280,11 +281,22 @@ type StorageLike = Pick<Storage, "getItem" | "setItem" | "removeItem">;
 
 export function loadRecentProjects(storage: StorageLike = window.localStorage): RecentProject[] {
   try {
-    const raw = storage.getItem(RECENT_PROJECTS_KEY);
+    const current = storage.getItem(RECENT_PROJECTS_KEY);
+    const legacy = current ? null : storage.getItem(LEGACY_RECENT_PROJECTS_KEY);
+    const raw = current ?? legacy;
     if (!raw) return [];
     const parsed = JSON.parse(raw) as RecentProject[];
     if (!Array.isArray(parsed)) return [];
-    return parsed.filter((item) => item && typeof item.path === "string" && typeof item.name === "string");
+    const projects = parsed.filter((item) => item && typeof item.path === "string" && typeof item.name === "string");
+    if (!current && legacy) {
+      try {
+        storage.setItem(RECENT_PROJECTS_KEY, JSON.stringify(projects));
+        storage.removeItem(LEGACY_RECENT_PROJECTS_KEY);
+      } catch {
+        // Keep using the legacy value when storage migration is unavailable.
+      }
+    }
+    return projects;
   } catch {
     return [];
   }
@@ -300,7 +312,7 @@ export function saveRecentProjects(projects: RecentProject[], storage: StorageLi
 
 export function addRecentProject(
   projects: RecentProject[],
-  project: LingridProject,
+  project: MyLingoProject,
   path?: string,
 ): RecentProject[] {
   const projectPath = path ?? project.projectPath ?? "";
@@ -324,6 +336,7 @@ export function removeRecentProject(projects: RecentProject[], path: string): Re
 export function clearRecentProjects(storage: StorageLike = window.localStorage): void {
   try {
     storage.removeItem(RECENT_PROJECTS_KEY);
+    storage.removeItem(LEGACY_RECENT_PROJECTS_KEY);
   } catch {
     // Silently skip.
   }

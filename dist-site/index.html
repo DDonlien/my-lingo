@@ -3,12 +3,12 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Lingrid — Lightweight PO/CSV Multilingual Matrix Editor</title>
-  <meta name="description" content="Lingrid is a lightweight, modern, local-first PO/CSV multilingual side-by-side matrix editor for game and software localization.">
-  <meta property="og:title" content="Lingrid — Lightweight PO/CSV Multilingual Matrix Editor">
+  <title>myLingo — Lightweight PO/CSV Multilingual Matrix Editor</title>
+  <meta name="description" content="myLingo is a lightweight, modern, local-first PO/CSV multilingual side-by-side matrix editor for game and software localization.">
+  <meta property="og:title" content="myLingo — Lightweight PO/CSV Multilingual Matrix Editor">
   <meta property="og:description" content="Side-by-side editing for multilingual translations. Local-first, PO metadata faithful, AI-assisted.">
   <meta property="og:type" content="website">
-  <meta property="og:image" content="https://ddonlien.github.io/lingrid/assets/icon-512.png">
+  <meta property="og:image" content="https://ddonlien.github.io/my-lingo/assets/icon-512.png">
   <meta name="theme-color" content="#1F1742">
   <link rel="icon" type="image/x-icon" href="favicon.ico">
   <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
@@ -22,12 +22,12 @@
   <nav class="nav">
     <div class="nav-container">
       <a href="#" class="nav-logo">
-        <img src="assets/icon-64.png" alt="Lingrid" class="nav-logo-img">
-        <span class="nav-logo-text">Lingrid</span>
+        <img src="assets/icon-64.png" alt="myLingo" class="nav-logo-img">
+        <span class="nav-logo-text">myLingo</span>
       </a>
       <div class="nav-links">
         <a href="#features" data-i18n="nav.features">Features</a>
-        <a href="https://github.com/ddonlien/lingrid" target="_blank" rel="noopener">GitHub</a>
+        <a href="https://github.com/ddonlien/my-lingo" target="_blank" rel="noopener">GitHub</a>
       </div>
       <div class="nav-actions">
         <button class="lang-toggle" id="langToggle" aria-label="Switch language">
@@ -35,7 +35,7 @@
           <span class="lang-sep">/</span>
           <span class="lang-option" data-lang="zh">中文</span>
         </button>
-        <a href="https://ddonlien.github.io/lingrid/app/" class="btn btn-primary btn-sm" data-i18n="nav.tryOnline">Try Online</a>
+        <a href="https://ddonlien.github.io/my-lingo/app/" class="btn btn-primary btn-sm" data-i18n="nav.tryOnline">Try Online</a>
       </div>
       <button class="nav-mobile-toggle" id="mobileToggle" aria-label="Toggle menu">
         <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
@@ -43,8 +43,8 @@
     </div>
     <div class="nav-mobile" id="navMobile">
       <a href="#features" data-i18n="nav.features">Features</a>
-      <a href="https://github.com/ddonlien/lingrid" target="_blank" rel="noopener">GitHub</a>
-      <a href="https://ddonlien.github.io/lingrid/app/" class="btn btn-primary" data-i18n="nav.tryOnline">Try Online</a>
+      <a href="https://github.com/ddonlien/my-lingo" target="_blank" rel="noopener">GitHub</a>
+      <a href="https://ddonlien.github.io/my-lingo/app/" class="btn btn-primary" data-i18n="nav.tryOnline">Try Online</a>
     </div>
   </nav>
 
@@ -56,14 +56,14 @@
         <span class="badge-dot"></span>
         <span data-i18n="hero.badge">Open Source & Local-First</span>
       </div>
-      <h1 class="hero-title" data-i18n="hero.title">Lingrid <span class="hero-title-accent">灵译</span></h1>
+      <h1 class="hero-title" data-i18n="hero.title"><span class="hero-title-accent">myLingo</span></h1>
       <p class="hero-subtitle" data-i18n="hero.subtitle">A lightweight, modern, local-first PO / CSV multilingual side-by-side matrix editor. Built for indie game developers, small software teams, and freelance translators.</p>
       <div class="hero-cta">
-        <a href="https://ddonlien.github.io/lingrid/app/" class="btn btn-primary btn-lg">
+        <a href="https://ddonlien.github.io/my-lingo/app/" class="btn btn-primary btn-lg">
           <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="5 3 19 12 5 21 5 3"></polygon></svg>
           <span data-i18n="hero.cta.try">Try in Browser</span>
         </a>
-        <a href="https://github.com/ddonlien/lingrid/releases" class="btn btn-secondary btn-lg" target="_blank" rel="noopener">
+        <a href="https://github.com/ddonlien/my-lingo/releases" class="btn btn-secondary btn-lg" target="_blank" rel="noopener">
           <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
           <span data-i18n="hero.cta.download">Download Desktop App</span>
         </a>
@@ -83,7 +83,7 @@
         <div class="app-shell" style="height: 420px; border-radius: 12px; overflow: hidden; box-shadow: 0 12px 48px rgba(0,0,0,0.12);">
           <!-- Topbar -->
           <header class="topbar">
-            <div class="brand"><div class="brand-mark"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 8l6 6M11 8l6 6M3 21h18M4 18h16M5 8v10M19 8v10M11 8v10M15 8v10"/></svg></div><strong>Lingrid</strong><span>灵译</span></div>
+            <div class="brand"><div class="brand-mark"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 8l6 6M11 8l6 6M3 21h18M4 18h16M5 8v10M19 8v10M11 8v10M15 8v10"/></svg></div><strong>myLingo</strong></div>
             <nav class="toolbar">
               <button class="button"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"/></svg><span data-text-en="Open" data-text-zh="打开"></span></button>
               <button class="button"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg><span data-text-en="Import CSV" data-text-zh="导入 CSV"></span></button>
@@ -164,7 +164,7 @@
             </aside>
           </div>
           <!-- Statusbar -->
-          <div class="statusbar"><span><i class="saved"></i>All changes saved</span><span>v0.1.1</span></div>
+          <div class="statusbar"><span><i class="saved"></i>All changes saved</span><span>v0.1.2</span></div>
         </div>
       </div>
     </div>
@@ -181,7 +181,7 @@
       <div class="app-screenshot" data-screenshot="import">
         <div class="app-shell" style="height: 380px; border-radius: 12px; overflow: hidden; box-shadow: 0 12px 48px rgba(0,0,0,0.12);">
           <header class="topbar">
-            <div class="brand"><div class="brand-mark"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 8l6 6M11 8l6 6M3 21h18M4 18h16M5 8v10M19 8v10M11 8v10M15 8v10"/></svg></div><strong>Lingrid</strong><span>灵译</span></div>
+            <div class="brand"><div class="brand-mark"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 8l6 6M11 8l6 6M3 21h18M4 18h16M5 8v10M19 8v10M11 8v10M15 8v10"/></svg></div><strong>myLingo</strong></div>
             <nav class="toolbar">
               <button class="button primary"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"/></svg><span data-text-en="Open" data-text-zh="打开"></span></button>
               <button class="button"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg><span data-text-en="Import CSV" data-text-zh="导入 CSV"></span></button>
@@ -204,7 +204,7 @@
               </div>
             </div>
           </div>
-          <div class="statusbar"><span><i class="saved"></i>Ready</span><span>v0.1.1</span></div>
+          <div class="statusbar"><span><i class="saved"></i>Ready</span><span>v0.1.2</span></div>
         </div>
       </div>
     </div>
@@ -221,7 +221,7 @@
       <div class="app-screenshot" data-screenshot="metadata">
         <div class="app-shell" style="height: 420px; border-radius: 12px; overflow: hidden; box-shadow: 0 12px 48px rgba(0,0,0,0.12);">
           <header class="topbar">
-            <div class="brand"><div class="brand-mark"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 8l6 6M11 8l6 6M3 21h18M4 18h16M5 8v10M19 8v10M11 8v10M15 8v10"/></svg></div><strong>Lingrid</strong><span>灵译</span></div>
+            <div class="brand"><div class="brand-mark"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 8l6 6M11 8l6 6M3 21h18M4 18h16M5 8v10M19 8v10M11 8v10M15 8v10"/></svg></div><strong>myLingo</strong></div>
             <nav class="toolbar">
               <button class="button primary"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11l5 5v11a2 2 0 0 1-2 2z"/><polyline points="17 21 17 13 7 13 7 21"/><polyline points="7 3 7 8 15 8"/></svg><span data-text-en="Save" data-text-zh="保存"></span></button>
             </nav>
@@ -259,7 +259,7 @@
               </section>
             </aside>
           </div>
-          <div class="statusbar"><span><i class="saved"></i>All changes saved</span><span>v0.1.1</span></div>
+          <div class="statusbar"><span><i class="saved"></i>All changes saved</span><span>v0.1.2</span></div>
         </div>
       </div>
     </div>
@@ -276,7 +276,7 @@
       <div class="app-screenshot" data-screenshot="save">
         <div class="app-shell" style="height: 420px; border-radius: 12px; overflow: hidden; box-shadow: 0 12px 48px rgba(0,0,0,0.12);">
           <header class="topbar">
-            <div class="brand"><div class="brand-mark"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 8l6 6M11 8l6 6M3 21h18M4 18h16M5 8v10M19 8v10M11 8v10M15 8v10"/></svg></div><strong>Lingrid</strong><span>灵译</span></div>
+            <div class="brand"><div class="brand-mark"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 8l6 6M11 8l6 6M3 21h18M4 18h16M5 8v10M19 8v10M11 8v10M15 8v10"/></svg></div><strong>myLingo</strong></div>
             <nav class="toolbar">
               <button class="button primary"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11l5 5v11a2 2 0 0 1-2 2z"/><polyline points="17 21 17 13 7 13 7 21"/><polyline points="7 3 7 8 15 8"/></svg><span data-text-en="Save .po" data-text-zh="保存 .po"></span><span class="button-dirty"></span></button>
               <button class="button"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11l5 5v11a2 2 0 0 1-2 2z"/><polyline points="17 21 17 13 7 13 7 21"/><polyline points="7 3 7 8 15 8"/></svg><span data-text-en="Save As" data-text-zh="另存为"></span></button>
@@ -326,7 +326,7 @@
               </section>
             </aside>
           </div>
-          <div class="statusbar"><span><i class="unsaved"></i>2 source files · 3 changed cells</span><span>v0.1.1</span></div>
+          <div class="statusbar"><span><i class="unsaved"></i>2 source files · 3 changed cells</span><span>v0.1.2</span></div>
         </div>
       </div>
     </div>
@@ -343,7 +343,7 @@
       <div class="app-screenshot" data-screenshot="ai">
         <div class="app-shell" style="height: 420px; border-radius: 12px; overflow: hidden; box-shadow: 0 12px 48px rgba(0,0,0,0.12);">
           <header class="topbar">
-            <div class="brand"><div class="brand-mark"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 8l6 6M11 8l6 6M3 21h18M4 18h16M5 8v10M19 8v10M11 8v10M15 8v10"/></svg></div><strong>Lingrid</strong><span>灵译</span></div>
+            <div class="brand"><div class="brand-mark"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 8l6 6M11 8l6 6M3 21h18M4 18h16M5 8v10M19 8v10M11 8v10M15 8v10"/></svg></div><strong>myLingo</strong></div>
             <nav class="toolbar">
               <button class="button primary"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11l5 5v11a2 2 0 0 1-2 2z"/><polyline points="17 21 17 13 7 13 7 21"/><polyline points="7 3 7 8 15 8"/></svg><span data-text-en="Save" data-text-zh="保存"></span></button>
             </nav>
@@ -383,7 +383,7 @@
               </section>
             </aside>
           </div>
-          <div class="statusbar"><span><i class="saved"></i>All changes saved</span><span>v0.1.1</span></div>
+          <div class="statusbar"><span><i class="saved"></i>All changes saved</span><span>v0.1.2</span></div>
         </div>
       </div>
     </div>
@@ -400,7 +400,7 @@
       <div class="app-screenshot" data-screenshot="tags">
         <div class="app-shell" style="height: 420px; border-radius: 12px; overflow: hidden; box-shadow: 0 12px 48px rgba(0,0,0,0.12);">
           <header class="topbar">
-            <div class="brand"><div class="brand-mark"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 8l6 6M11 8l6 6M3 21h18M4 18h16M5 8v10M19 8v10M11 8v10M15 8v10"/></svg></div><strong>Lingrid</strong><span>灵译</span></div>
+            <div class="brand"><div class="brand-mark"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 8l6 6M11 8l6 6M3 21h18M4 18h16M5 8v10M19 8v10M11 8v10M15 8v10"/></svg></div><strong>myLingo</strong></div>
             <nav class="toolbar">
               <button class="button primary"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11l5 5v11a2 2 0 0 1-2 2z"/><polyline points="17 21 17 13 7 13 7 21"/><polyline points="7 3 7 8 15 8"/></svg><span data-text-en="Save" data-text-zh="保存"></span></button>
             </nav>
@@ -454,7 +454,7 @@
               </section>
             </aside>
           </div>
-          <div class="statusbar"><span><i class="saved"></i>All changes saved</span><span>v0.1.1</span></div>
+          <div class="statusbar"><span><i class="saved"></i>All changes saved</span><span>v0.1.2</span></div>
         </div>
       </div>
     </div>
@@ -471,7 +471,7 @@
       <div class="app-screenshot" data-screenshot="batch">
         <div class="app-shell" style="height: 420px; border-radius: 12px; overflow: hidden; box-shadow: 0 12px 48px rgba(0,0,0,0.12);">
           <header class="topbar">
-            <div class="brand"><div class="brand-mark"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 8l6 6M11 8l6 6M3 21h18M4 18h16M5 8v10M19 8v10M11 8v10M15 8v10"/></svg></div><strong>Lingrid</strong><span>灵译</span></div>
+            <div class="brand"><div class="brand-mark"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 8l6 6M11 8l6 6M3 21h18M4 18h16M5 8v10M19 8v10M11 8v10M15 8v10"/></svg></div><strong>myLingo</strong></div>
             <nav class="toolbar">
               <button class="button primary"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11l5 5v11a2 2 0 0 1-2 2z"/><polyline points="17 21 17 13 7 13 7 21"/><polyline points="7 3 7 8 15 8"/></svg><span data-text-en="Save" data-text-zh="保存"></span></button>
               <span class="separator"></span>
@@ -525,7 +525,7 @@
               </section>
             </aside>
           </div>
-          <div class="statusbar"><span><i class="saved"></i>All changes saved</span><span>v0.1.1</span></div>
+          <div class="statusbar"><span><i class="saved"></i>All changes saved</span><span>v0.1.2</span></div>
         </div>
       </div>
     </div>
@@ -552,7 +552,7 @@
             <li data-i18n="download.web.item3">Falls back to download when API unavailable</li>
             <li data-i18n="download.web.item4">Perfect for quick edits and demos</li>
           </ul>
-          <a href="https://ddonlien.github.io/lingrid/app/" class="btn btn-primary btn-full">
+          <a href="https://ddonlien.github.io/my-lingo/app/" class="btn btn-primary btn-full">
             <span data-i18n="download.web.cta">Launch Web App</span>
           </a>
         </div>
@@ -570,7 +570,7 @@
             <li data-i18n="download.desktop.item3">Windows, macOS, and Linux</li>
             <li data-i18n="download.desktop.item4">Full filesystem access without browser sandbox</li>
           </ul>
-          <a href="https://github.com/ddonlien/lingrid/releases" class="btn btn-primary btn-full" target="_blank" rel="noopener">
+          <a href="https://github.com/ddonlien/my-lingo/releases" class="btn btn-primary btn-full" target="_blank" rel="noopener">
             <span data-i18n="download.desktop.cta">Get Desktop App</span>
           </a>
         </div>
@@ -608,10 +608,10 @@
       <h2 data-i18n="cta.title">Start Localizing Smarter</h2>
       <p data-i18n="cta.desc">Free, open source, and ready for your next project.</p>
       <div class="cta-buttons">
-        <a href="https://ddonlien.github.io/lingrid/app/" class="btn btn-primary btn-lg">
+        <a href="https://ddonlien.github.io/my-lingo/app/" class="btn btn-primary btn-lg">
           <span data-i18n="cta.btn.try">Try in Browser</span>
         </a>
-        <a href="https://github.com/ddonlien/lingrid" class="btn btn-secondary btn-lg" target="_blank" rel="noopener">
+        <a href="https://github.com/ddonlien/my-lingo" class="btn btn-secondary btn-lg" target="_blank" rel="noopener">
           <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg>
           <span data-i18n="cta.btn.github">View on GitHub</span>
         </a>
@@ -624,31 +624,31 @@
     <div class="container">
       <div class="footer-main">
         <div class="footer-brand">
-          <img src="assets/icon-64.png" alt="Lingrid" class="footer-logo">
-          <span class="footer-brand-text">Lingrid <span class="footer-brand-accent">灵译</span></span>
+          <img src="assets/icon-64.png" alt="myLingo" class="footer-logo">
+          <span class="footer-brand-text">myLingo</span>
           <p class="footer-brand-desc" data-i18n="footer.desc">Lightweight PO/CSV multilingual matrix editor for game and software localization.</p>
         </div>
         <div class="footer-links">
           <div class="footer-col">
             <h4 data-i18n="footer.col.product">Product</h4>
-            <a href="https://ddonlien.github.io/lingrid/app/" data-i18n="footer.link.web">Web App</a>
-            <a href="https://github.com/ddonlien/lingrid/releases" data-i18n="footer.link.desktop">Desktop Releases</a>
+            <a href="https://ddonlien.github.io/my-lingo/app/" data-i18n="footer.link.web">Web App</a>
+            <a href="https://github.com/ddonlien/my-lingo/releases" data-i18n="footer.link.desktop">Desktop Releases</a>
             <a href="#features" data-i18n="footer.link.features">Features</a>
           </div>
           <div class="footer-col">
             <h4 data-i18n="footer.col.resources">Resources</h4>
-            <a href="https://github.com/ddonlien/lingrid/blob/main/README.md" target="_blank" rel="noopener" data-i18n="footer.link.docs">Documentation</a>
-            <a href="https://github.com/ddonlien/lingrid/blob/main/REQUIREMENTS.md" target="_blank" rel="noopener" data-i18n="footer.link.roadmap">Roadmap</a>
-            <a href="https://github.com/ddonlien/lingrid/issues" target="_blank" rel="noopener" data-i18n="footer.link.issues">Issues</a>
+            <a href="https://github.com/ddonlien/my-lingo/blob/main/README.md" target="_blank" rel="noopener" data-i18n="footer.link.docs">Documentation</a>
+            <a href="https://github.com/ddonlien/my-lingo/blob/main/REQUIREMENTS.md" target="_blank" rel="noopener" data-i18n="footer.link.roadmap">Roadmap</a>
+            <a href="https://github.com/ddonlien/my-lingo/issues" target="_blank" rel="noopener" data-i18n="footer.link.issues">Issues</a>
           </div>
           <div class="footer-col">
             <h4 data-i18n="footer.col.connect">Connect</h4>
-            <a href="https://github.com/ddonlien/lingrid" target="_blank" rel="noopener">GitHub</a>
+            <a href="https://github.com/ddonlien/my-lingo" target="_blank" rel="noopener">GitHub</a>
           </div>
         </div>
       </div>
       <div class="footer-bottom">
-        <span data-i18n="footer.copyright">© 2026 Lingrid. Open source project.</span>
+        <span data-i18n="footer.copyright">© 2026 myLingo. Open source project.</span>
       </div>
     </div>
   </footer>
