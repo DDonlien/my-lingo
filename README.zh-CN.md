@@ -194,9 +194,9 @@ npm run build
 ## 文档入口
 
 - Agent 协作规范：`AGENTS.md`
-- 需求与验收追踪：`REQUIREMENTS.md`
+- 需求与验收追踪：`issue/issue-migration-921e022a49e9-QA-mylingo-versioncontrolid.md`
 - 视觉规范：`DESIGN.md`
-- 执行日志：`agent-log/`
+- 执行日志：`issue/README.md`
 
 ## 设计原则
 

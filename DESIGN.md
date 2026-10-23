@@ -1,6 +1,6 @@
 # myLingo 视觉规范
 
-`DESIGN.md` 只记录视觉设计系统，不记录系统架构、仓库说明或具体需求。系统说明写入 `README.md`，任务和验收写入 `REQUIREMENTS.md`。
+`DESIGN.md` 只记录视觉设计系统，不记录系统架构、仓库说明或具体需求。系统说明写入 `README.md`，任务和验收写入 `issue/issue-migration-921e022a49e9-QA-mylingo-versioncontrolid.md`。
 
 ## 视觉主题
 

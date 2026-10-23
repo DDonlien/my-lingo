@@ -192,9 +192,9 @@ Currently, `npm` is preferred since the local Node.js v20 conflicts with global 
 ## Documentation
 
 - **Agent Collaboration Protocol**: `AGENTS.md`
-- **Requirements & Acceptance Checklist**: `REQUIREMENTS.md`
+- **Requirements & Acceptance Checklist**: `issue/issue-migration-921e022a49e9-QA-mylingo-versioncontrolid.md`
 - **Design System & Visual Spec**: `DESIGN.md`
-- **Agent Logs**: `agent-log/`
+- **Agent Logs**: `issue/README.md`
 
 ## Design Principles
 
