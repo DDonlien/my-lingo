@@ -1,57 +1,57 @@
 # Issue 入口
 
-本目录是当前工作副本的任务、检查与交接入口。旧需求的状态、ID 与来源保留在对应 Issue；历史 Comments 不自动更新当前完成度。`versioncontrolid` 保持待定义占位。
+本目录是当前工作副本的任务、检查与交接入口。旧需求的状态、ID 与来源保留在对应 Issue；历史 Comments 不自动更新当前完成度。实际实施版本只在核实后填写；尚无提交或未核实则省略文件名后缀，并在 property 说明。
 
-- [Issue 模板](issue-issueid-issuetype-issuename-versioncontrolid.md)
-- [本轮迁移记录](issue-DOC-migration-20261023-DOC-migrate-project-workflow-versioncontrolid.md)
+- [Issue 模板](issue_template.md)
+- [本轮迁移记录](issue_%E8%BF%81%E7%A7%BB%E9%A1%B9%E7%9B%AE%E4%BB%BB%E5%8A%A1%E4%B8%8E%E5%8D%8F%E4%BD%9C%E8%AE%B0%E5%BD%95_21e4c099.md)
 - [旧路径与来源映射](migration-map.json)
 
-- [myLingo 需求追踪](issue-migration-921e022a49e9-QA-mylingo-versioncontrolid.md) — `migration-921e022a49e9`；已确认约束 / 状态待核对（原文未单列完成状态）；原路径 `REQUIREMENTS.md`。
+- [myLingo 需求追踪](issue_%E8%AF%B4%E6%98%8EmyLingo%E9%9C%80%E6%B1%82%E8%AE%B0%E5%BD%95%E7%9A%84ID%E5%B1%82%E7%BA%A7%E4%B8%8E%E9%AA%8C%E6%94%B6%E6%A0%87%E8%AE%B0.md) — `migration-921e022a49e9`；已确认约束 / 状态待核对（原文未单列完成状态）；原路径 `REQUIREMENTS.md`。
 
-- [DOC-A：仓库文档基础](issue-DOC-A-000-DOC-repository-documentation-foundation-versioncontrolid.md) — `DOC-A-000`；已完成（沿用原需求记录；本轮未重新执行产品验收）；原路径 `REQUIREMENTS.md`。
+- [建立myLingo协作规范并保留旧需求与日志制度记录](issue_%E5%BB%BA%E7%AB%8BmyLingo%E5%8D%8F%E4%BD%9C%E8%A7%84%E8%8C%83%E5%B9%B6%E4%BF%9D%E7%95%99%E6%97%A7%E9%9C%80%E6%B1%82%E4%B8%8E%E6%97%A5%E5%BF%97%E5%88%B6%E5%BA%A6%E8%AE%B0%E5%BD%95.md)、[补全myLingo产品说明与AI提示变量文档](issue_%E8%A1%A5%E5%85%A8myLingo%E4%BA%A7%E5%93%81%E8%AF%B4%E6%98%8E%E4%B8%8EAI%E6%8F%90%E7%A4%BA%E5%8F%98%E9%87%8F%E6%96%87%E6%A1%A3.md)、[建立myLingo界面视觉与可访问性规范](issue_%E5%BB%BA%E7%AB%8BmyLingo%E7%95%8C%E9%9D%A2%E8%A7%86%E8%A7%89%E4%B8%8E%E5%8F%AF%E8%AE%BF%E9%97%AE%E6%80%A7%E8%A7%84%E8%8C%83.md) — `DOC-A-000`；已完成（沿用原需求记录；本轮未重新执行产品验收）；原路径 `REQUIREMENTS.md`。
 
-- [FOUND-A：产品边界](issue-FOUND-A-000-DOC-product-versioncontrolid.md) — `FOUND-A-000`；已完成（沿用原需求记录；本轮未重新执行产品验收）；原路径 `REQUIREMENTS.md`。
+- [定义myLingo本地化编辑器定位与首版范围](issue_%E5%AE%9A%E4%B9%89myLingo%E6%9C%AC%E5%9C%B0%E5%8C%96%E7%BC%96%E8%BE%91%E5%99%A8%E5%AE%9A%E4%BD%8D%E4%B8%8E%E9%A6%96%E7%89%88%E8%8C%83%E5%9B%B4.md)、[统一myLingo品牌命名并兼容旧Lingrid项目与偏好](issue_%E7%BB%9F%E4%B8%80myLingo%E5%93%81%E7%89%8C%E5%91%BD%E5%90%8D%E5%B9%B6%E5%85%BC%E5%AE%B9%E6%97%A7Lingrid%E9%A1%B9%E7%9B%AE%E4%B8%8E%E5%81%8F%E5%A5%BD.md) — `FOUND-A-000`；已完成（沿用原需求记录；本轮未重新执行产品验收）；原路径 `REQUIREMENTS.md`。
 
-- [CORE-A：核心数据模型](issue-CORE-A-000-DOC-data-model-versioncontrolid.md) — `CORE-A-000`；已完成（沿用原需求记录；本轮未重新执行产品验收）；原路径 `REQUIREMENTS.md`。
+- [CORE-A：核心数据模型](issue_%E5%BB%BA%E7%AB%8B%E4%BF%9D%E7%95%99PO%E5%85%83%E6%95%B0%E6%8D%AE%E7%9A%84%E7%BF%BB%E8%AF%91%E7%9F%A9%E9%98%B5%E4%B8%8E%E9%A1%B9%E7%9B%AE%E7%8A%B6%E6%80%81%E6%A8%A1%E5%9E%8B.md) — `CORE-A-000`；已完成（沿用原需求记录；本轮未重新执行产品验收）；原路径 `REQUIREMENTS.md`。
 
-- [FILE-A：文件导入与保存](issue-FILE-A-000-DATA-files-import-save-versioncontrolid.md) — `FILE-A-000`；已完成（沿用原需求记录；本轮未重新执行产品验收）；原路径 `REQUIREMENTS.md`。
+- [导入合并PO-POT-CSV并保持只读模板边界](issue_%E5%AF%BC%E5%85%A5%E5%90%88%E5%B9%B6PO-POT-CSV%E5%B9%B6%E4%BF%9D%E6%8C%81%E5%8F%AA%E8%AF%BB%E6%A8%A1%E6%9D%BF%E8%BE%B9%E7%95%8C.md)、[将修改可靠写回PO与CSV并防止外部覆盖冲突](issue_%E5%B0%86%E4%BF%AE%E6%94%B9%E5%8F%AF%E9%9D%A0%E5%86%99%E5%9B%9EPO%E4%B8%8ECSV%E5%B9%B6%E9%98%B2%E6%AD%A2%E5%A4%96%E9%83%A8%E8%A6%86%E7%9B%96%E5%86%B2%E7%AA%81.md)、[保存另存与恢复myLingo项目JSON状态](issue_%E4%BF%9D%E5%AD%98%E5%8F%A6%E5%AD%98%E4%B8%8E%E6%81%A2%E5%A4%8DmyLingo%E9%A1%B9%E7%9B%AEJSON%E7%8A%B6%E6%80%81.md)、[配置语言显示名称并拖放保存列顺序](issue_%E9%85%8D%E7%BD%AE%E8%AF%AD%E8%A8%80%E6%98%BE%E7%A4%BA%E5%90%8D%E7%A7%B0%E5%B9%B6%E6%8B%96%E6%94%BE%E4%BF%9D%E5%AD%98%E5%88%97%E9%A1%BA%E5%BA%8F.md) — `FILE-A-000`；已完成（沿用原需求记录；本轮未重新执行产品验收）；原路径 `REQUIREMENTS.md`。
 
-- [UI-A：主界面与编辑体验](issue-UI-A-000-UI-interface-editing-experience-versioncontrolid.md) — `UI-A-000`；已完成（沿用原需求记录；本轮未重新执行产品验收）；原路径 `REQUIREMENTS.md`。
+- [提供多语言应用外壳与本地化演示项目](issue_%E6%8F%90%E4%BE%9B%E5%A4%9A%E8%AF%AD%E8%A8%80%E5%BA%94%E7%94%A8%E5%A4%96%E5%A3%B3%E4%B8%8E%E6%9C%AC%E5%9C%B0%E5%8C%96%E6%BC%94%E7%A4%BA%E9%A1%B9%E7%9B%AE.md)、[在矩阵与详情区编辑译文并查看按需上下文](issue_%E5%9C%A8%E7%9F%A9%E9%98%B5%E4%B8%8E%E8%AF%A6%E6%83%85%E5%8C%BA%E7%BC%96%E8%BE%91%E8%AF%91%E6%96%87%E5%B9%B6%E6%9F%A5%E7%9C%8B%E6%8C%89%E9%9C%80%E4%B8%8A%E4%B8%8B%E6%96%87.md)、[在文件操作入口区分源文件与项目保存状态](issue_%E5%9C%A8%E6%96%87%E4%BB%B6%E6%93%8D%E4%BD%9C%E5%85%A5%E5%8F%A3%E5%8C%BA%E5%88%86%E6%BA%90%E6%96%87%E4%BB%B6%E4%B8%8E%E9%A1%B9%E7%9B%AE%E4%BF%9D%E5%AD%98%E7%8A%B6%E6%80%81.md) — `UI-A-000`；已完成（沿用原需求记录；本轮未重新执行产品验收）；原路径 `REQUIREMENTS.md`。
 
-- [TAG-A：Tag 与标记](issue-TAG-A-000-DATA-tag-versioncontrolid.md) — `TAG-A-000`；已完成（沿用原需求记录；本轮未重新执行产品验收）；原路径 `REQUIREMENTS.md`。
+- [TAG-A：Tag 与标记](issue_%E7%BC%96%E8%BE%91Source-Tag%E4%B8%8EWord-Tag%E5%B9%B6%E6%94%AF%E6%8C%81%E9%80%90%E8%A1%8C%E8%BE%93%E5%85%A5.md) — `TAG-A-000`；已完成（沿用原需求记录；本轮未重新执行产品验收）；原路径 `REQUIREMENTS.md`。
 
-- [SEARCH-A：搜索、筛选与统计](issue-SEARCH-A-000-FE-search-filter-versioncontrolid.md) — `SEARCH-A-000`；已完成（沿用原需求记录；本轮未重新执行产品验收）；原路径 `REQUIREMENTS.md`。
+- [搜索译文与标签并组合语言完成度和修改筛选](issue_%E6%90%9C%E7%B4%A2%E8%AF%91%E6%96%87%E4%B8%8E%E6%A0%87%E7%AD%BE%E5%B9%B6%E7%BB%84%E5%90%88%E8%AF%AD%E8%A8%80%E5%AE%8C%E6%88%90%E5%BA%A6%E5%92%8C%E4%BF%AE%E6%94%B9%E7%AD%9B%E9%80%89.md)、[统计翻译条目语言完成率标签与修改数量](issue_%E7%BB%9F%E8%AE%A1%E7%BF%BB%E8%AF%91%E6%9D%A1%E7%9B%AE%E8%AF%AD%E8%A8%80%E5%AE%8C%E6%88%90%E7%8E%87%E6%A0%87%E7%AD%BE%E4%B8%8E%E4%BF%AE%E6%94%B9%E6%95%B0%E9%87%8F.md) — `SEARCH-A-000`；已完成（沿用原需求记录；本轮未重新执行产品验收）；原路径 `REQUIREMENTS.md`。
 
-- [AI-A：轻量 AI / 翻译 API 建议](issue-AI-A-000-PM-ai-translation-api-versioncontrolid.md) — `AI-A-000`；进行中（原文同时包含已完成与未完成项）；原路径 `REQUIREMENTS.md`。
+- [配置多Provider接口并生成可确认的单元格翻译建议](issue_%E9%85%8D%E7%BD%AE%E5%A4%9AProvider%E6%8E%A5%E5%8F%A3%E5%B9%B6%E7%94%9F%E6%88%90%E5%8F%AF%E7%A1%AE%E8%AE%A4%E7%9A%84%E5%8D%95%E5%85%83%E6%A0%BC%E7%BF%BB%E8%AF%91%E5%BB%BA%E8%AE%AE.md)、[渲染目标语言与同源其他译文的提示模板变量](issue_%E6%B8%B2%E6%9F%93%E7%9B%AE%E6%A0%87%E8%AF%AD%E8%A8%80%E4%B8%8E%E5%90%8C%E6%BA%90%E5%85%B6%E4%BB%96%E8%AF%91%E6%96%87%E7%9A%84%E6%8F%90%E7%A4%BA%E6%A8%A1%E6%9D%BF%E5%8F%98%E9%87%8F.md)、[批量填充空译文并支持取消限流重试与失败停止](issue_%E6%89%B9%E9%87%8F%E5%A1%AB%E5%85%85%E7%A9%BA%E8%AF%91%E6%96%87%E5%B9%B6%E6%94%AF%E6%8C%81%E5%8F%96%E6%B6%88%E9%99%90%E6%B5%81%E9%87%8D%E8%AF%95%E4%B8%8E%E5%A4%B1%E8%B4%A5%E5%81%9C%E6%AD%A2.md)、[为选中或空白Source-Tag批量生成标签建议](issue_%E4%B8%BA%E9%80%89%E4%B8%AD%E6%88%96%E7%A9%BA%E7%99%BDSource-Tag%E6%89%B9%E9%87%8F%E7%94%9F%E6%88%90%E6%A0%87%E7%AD%BE%E5%BB%BA%E8%AE%AE.md)、[并发分配多模型翻译并在接口失败时转发](issue_%E5%B9%B6%E5%8F%91%E5%88%86%E9%85%8D%E5%A4%9A%E6%A8%A1%E5%9E%8B%E7%BF%BB%E8%AF%91%E5%B9%B6%E5%9C%A8%E6%8E%A5%E5%8F%A3%E5%A4%B1%E8%B4%A5%E6%97%B6%E8%BD%AC%E5%8F%91.md) — `AI-A-000`；进行中（原文同时包含已完成与未完成项）；原路径 `REQUIREMENTS.md`。
 
-- [BATCH-A：轻量批处理](issue-BATCH-A-000-PM-project-goal-versioncontrolid.md) — `BATCH-A-000`；已完成（沿用原需求记录；本轮未重新执行产品验收）；原路径 `REQUIREMENTS.md`。
+- [BATCH-A：轻量批处理](issue_%E5%9C%A8%E9%80%89%E5%AE%9A%E8%AF%AD%E8%A8%80%E4%B8%8E%E6%A0%87%E7%AD%BE%E8%8C%83%E5%9B%B4%E6%89%B9%E9%87%8F%E6%9F%A5%E6%89%BE%E6%9B%BF%E6%8D%A2%E6%96%87%E6%9C%AC.md) — `BATCH-A-000`；已完成（沿用原需求记录；本轮未重新执行产品验收）；原路径 `REQUIREMENTS.md`。
 
-- [BATCH-B：矩阵多选与批量填写](issue-BATCH-B-000-UI-multiselect-batch-versioncontrolid.md) — `BATCH-B-000`；进行中（原文同时包含已完成与未完成项）；原路径 `REQUIREMENTS.md`。
+- [在矩阵多选复制粘贴批量填写并撤销重做](issue_%E5%9C%A8%E7%9F%A9%E9%98%B5%E5%A4%9A%E9%80%89%E5%A4%8D%E5%88%B6%E7%B2%98%E8%B4%B4%E6%89%B9%E9%87%8F%E5%A1%AB%E5%86%99%E5%B9%B6%E6%92%A4%E9%94%80%E9%87%8D%E5%81%9A.md)、[点击单元格外取消选择并切换AI批量模式](issue_%E7%82%B9%E5%87%BB%E5%8D%95%E5%85%83%E6%A0%BC%E5%A4%96%E5%8F%96%E6%B6%88%E9%80%89%E6%8B%A9%E5%B9%B6%E5%88%87%E6%8D%A2AI%E6%89%B9%E9%87%8F%E6%A8%A1%E5%BC%8F.md) — `BATCH-B-000`；进行中（原文同时包含已完成与未完成项）；原路径 `REQUIREMENTS.md`。
 
-- [QA-A：Phase 1（v0.1）验证](issue-QA-A-000-QA-verification-versioncontrolid.md) — `QA-A-000`；阻塞（沿用原需求记录）；原路径 `REQUIREMENTS.md`。
+- [QA-A：Phase 1（v0.1）验证](issue_%E9%AA%8C%E8%AF%81PO-POT-CSV%E5%BE%80%E8%BF%94%E4%BF%9D%E7%9C%9F%E4%B8%8E%E7%BC%96%E8%BE%91%E4%BF%9D%E5%AD%98%E6%B5%81%E7%A8%8B.md) — `QA-A-000`；阻塞（沿用原需求记录）；原路径 `REQUIREMENTS.md`。
 
-- [EDIT-A：单元格编辑状态追踪 #epic #P1.5](issue-EDIT-A-000-DB-editing-state-epic-versioncontrolid.md) — `EDIT-A-000`；已完成（沿用原需求记录；本轮未重新执行产品验收）；原路径 `REQUIREMENTS.md`。
+- [EDIT-A：单元格编辑状态追踪 #epic #P1.5](issue_%E6%8C%81%E4%B9%85%E5%8C%96%E5%8D%95%E5%85%83%E6%A0%BC%E7%BC%96%E8%BE%91%E5%8E%86%E5%8F%B2%E5%B9%B6%E6%98%BE%E7%A4%BA%E5%92%8C%E7%AD%9B%E9%80%89%E4%BF%AE%E6%94%B9%E7%8A%B6%E6%80%81.md) — `EDIT-A-000`；已完成（沿用原需求记录；本轮未重新执行产品验收）；原路径 `REQUIREMENTS.md`。
 
-- [EDIT-B：外部 PO 变更检测与"新增"状态 #epic #P1.5](issue-EDIT-B-000-UI-po-state-epic-versioncontrolid.md) — `EDIT-B-000`；待处理（原文未完成项保持未勾选）；原路径 `REQUIREMENTS.md`。
+- [EDIT-B：外部 PO 变更检测与"新增"状态 #epic #P1.5](issue_%E6%A3%80%E6%B5%8B%E5%A4%96%E9%83%A8PO%E5%8F%98%E5%8C%96%E5%B9%B6%E7%8B%AC%E7%AB%8B%E6%A0%87%E8%AE%B0%E7%AD%9B%E9%80%89%E6%96%B0%E5%A2%9E%E8%AF%8D%E6%9D%A1.md) — `EDIT-B-000`；待处理（原文未完成项保持未勾选）；原路径 `REQUIREMENTS.md`。
 
-- [PERF-A：矩阵大工程性能优化 #epic #P1.5](issue-PERF-A-000-SEC-performance-optimization-epic-versioncontrolid.md) — `PERF-A-000`；进行中（原文同时包含已完成与未完成项）；原路径 `REQUIREMENTS.md`。
+- [PERF-A：矩阵大工程性能优化 #epic #P1.5](issue_%E9%80%9A%E8%BF%87%E7%9F%A9%E9%98%B5%E8%99%9A%E6%8B%9F%E6%BB%9A%E5%8A%A8%E5%B1%80%E9%83%A8%E7%8A%B6%E6%80%81%E4%B8%8E%E7%BB%84%E4%BB%B6%E9%9A%94%E7%A6%BB%E5%87%8F%E5%B0%91%E5%8D%A1%E9%A1%BF.md) — `PERF-A-000`；进行中（原文同时包含已完成与未完成项）；原路径 `REQUIREMENTS.md`。
 
-- [FILE-B：隐藏式项目文件与文件夹一站式加载 #epic #P1.5](issue-FILE-B-000-PM-project-files-load-epic-versioncontrolid.md) — `FILE-B-000`；已完成（沿用原需求记录；本轮未重新执行产品验收）；原路径 `REQUIREMENTS.md`。
+- [FILE-B：隐藏式项目文件与文件夹一站式加载 #epic #P1.5](issue_%E5%90%88%E5%B9%B6%E7%9B%AE%E5%BD%95%E6%8E%88%E6%9D%83%E5%B9%B6%E8%87%AA%E5%8A%A8%E5%8A%A0%E8%BD%BD%E9%9A%90%E8%97%8Fmy-lingo%E9%A1%B9%E7%9B%AE%E9%85%8D%E7%BD%AE.md) — `FILE-B-000`；已完成（沿用原需求记录；本轮未重新执行产品验收）；原路径 `REQUIREMENTS.md`。
 
-- [FILE-C：最近项目历史记录列表 #epic #P1.5](issue-FILE-C-000-UX-project-list-epic-versioncontrolid.md) — `FILE-C-000`；已完成（沿用原需求记录；本轮未重新执行产品验收）；原路径 `REQUIREMENTS.md`。
+- [FILE-C：最近项目历史记录列表 #epic #P1.5](issue_%E8%AE%B0%E5%BD%95%E6%9C%80%E8%BF%91%E9%A1%B9%E7%9B%AE%E5%B9%B6%E5%9C%A8%E6%89%93%E5%BC%80%E8%8F%9C%E5%8D%95%E4%B8%AD%E5%BF%AB%E9%80%9F%E6%81%A2%E5%A4%8D%E4%B8%8E%E7%A7%BB%E9%99%A4.md) — `FILE-C-000`；已完成（沿用原需求记录；本轮未重新执行产品验收）；原路径 `REQUIREMENTS.md`。
 
-- [SITE-A：myLingo 介绍网站（Marketing Site / Landing Page）](issue-SITE-A-000-DOC-mylingo-website-marketing-site-landing-versioncontrolid.md) — `SITE-A-000`；已完成（沿用原需求记录；本轮未重新执行产品验收）；原路径 `REQUIREMENTS.md`。
+- [SITE-A：myLingo 介绍网站（Marketing Site / Landing Page）](issue_%E6%90%AD%E5%BB%BA%E5%8F%AF%E5%88%87%E6%8D%A2%E4%B8%AD%E8%8B%B1%E6%96%87%E5%B9%B6%E6%BC%94%E7%A4%BA%E6%A0%B8%E5%BF%83%E7%89%B9%E6%80%A7%E7%9A%84myLingo%E4%BB%8B%E7%BB%8D%E7%BD%91%E7%AB%99.md) — `SITE-A-000`；已完成（沿用原需求记录；本轮未重新执行产品验收）；原路径 `REQUIREMENTS.md`。
 
-- [SITE-B：网站构建与部署](issue-SITE-B-000-OPS-website-build-deployment-versioncontrolid.md) — `SITE-B-000`；进行中（原文同时包含已完成与未完成项）；原路径 `REQUIREMENTS.md`。
+- [SITE-B：网站构建与部署](issue_%E5%B0%86myLingo%E4%BB%8B%E7%BB%8D%E7%BD%91%E7%AB%99%E6%8E%A5%E5%85%A5%E6%9E%84%E5%BB%BA%E9%A2%84%E8%A7%88%E4%B8%8EPages%E9%83%A8%E7%BD%B2.md) — `SITE-B-000`；进行中（原文同时包含已完成与未完成项）；原路径 `REQUIREMENTS.md`。
 
-- [SITE-C：网站验收标准](issue-SITE-C-000-OPS-website-acceptance-versioncontrolid.md) — `SITE-C-000`；进行中（原文同时包含已完成与未完成项）；原路径 `REQUIREMENTS.md`。
+- [SITE-C：网站验收标准](issue_%E9%AA%8C%E6%94%B6%E4%BB%8B%E7%BB%8D%E7%BD%91%E7%AB%99%E5%B8%83%E5%B1%80%E9%93%BE%E6%8E%A5%E8%AF%AD%E8%A8%80%E5%88%87%E6%8D%A2%E4%B8%8E%E6%80%A7%E8%83%BD%E6%8C%87%E6%A0%87.md) — `SITE-C-000`；进行中（原文同时包含已完成与未完成项）；原路径 `REQUIREMENTS.md`。
 
-- [BACK-A：格式与工作流扩展](issue-BACK-A-001-CI-project-goal-versioncontrolid.md) — `BACK-A-001`；进行中（原文同时包含已完成与未完成项）；原路径 `REQUIREMENTS.md`。
+- [支持Excel翻译文件导入与导出](issue_%E6%94%AF%E6%8C%81Excel%E7%BF%BB%E8%AF%91%E6%96%87%E4%BB%B6%E5%AF%BC%E5%85%A5%E4%B8%8E%E5%AF%BC%E5%87%BA.md)、[为本地化翻译提供术语库支持](issue_%E4%B8%BA%E6%9C%AC%E5%9C%B0%E5%8C%96%E7%BF%BB%E8%AF%91%E6%8F%90%E4%BE%9B%E6%9C%AF%E8%AF%AD%E5%BA%93%E6%94%AF%E6%8C%81.md)、[封装Electron桌面应用并准备安装包发布](issue_%E5%B0%81%E8%A3%85Electron%E6%A1%8C%E9%9D%A2%E5%BA%94%E7%94%A8%E5%B9%B6%E5%87%86%E5%A4%87%E5%AE%89%E8%A3%85%E5%8C%85%E5%8F%91%E5%B8%83.md)、[为本地化翻译提供翻译记忆支持](issue_%E4%B8%BA%E6%9C%AC%E5%9C%B0%E5%8C%96%E7%BF%BB%E8%AF%91%E6%8F%90%E4%BE%9B%E7%BF%BB%E8%AF%91%E8%AE%B0%E5%BF%86%E6%94%AF%E6%8C%81.md)、[记录待细化的myLingo复杂质量检查需求](issue_%E8%AE%B0%E5%BD%95%E5%BE%85%E7%BB%86%E5%8C%96%E7%9A%84myLingo%E5%A4%8D%E6%9D%82%E8%B4%A8%E9%87%8F%E6%A3%80%E6%9F%A5%E9%9C%80%E6%B1%82.md)、[提供plural-forms高级编辑能力](issue_%E6%8F%90%E4%BE%9Bplural-forms%E9%AB%98%E7%BA%A7%E7%BC%96%E8%BE%91%E8%83%BD%E5%8A%9B.md)、[对比Git差异与外部翻译文件修改](issue_%E5%AF%B9%E6%AF%94Git%E5%B7%AE%E5%BC%82%E4%B8%8E%E5%A4%96%E9%83%A8%E7%BF%BB%E8%AF%91%E6%96%87%E4%BB%B6%E4%BF%AE%E6%94%B9.md)、[扩展JSON-i18next-XLIFF翻译文件支持](issue_%E6%89%A9%E5%B1%95JSON-i18next-XLIFF%E7%BF%BB%E8%AF%91%E6%96%87%E4%BB%B6%E6%94%AF%E6%8C%81.md)、[保留批量AI建议的原始后续待办](issue_%E4%BF%9D%E7%95%99%E6%89%B9%E9%87%8FAI%E5%BB%BA%E8%AE%AE%E7%9A%84%E5%8E%9F%E5%A7%8B%E5%90%8E%E7%BB%AD%E5%BE%85%E5%8A%9E.md) — `BACK-A-001`；进行中（原文同时包含已完成与未完成项）；原路径 `REQUIREMENTS.md`。
 
-- [BRAND-A：品牌与图标资产](issue-BRAND-A-001-UI-assets-versioncontrolid.md) — `BRAND-A-001`；进行中（原文同时包含已完成与未完成项）；原路径 `REQUIREMENTS.md`。
+- [BRAND-A：品牌与图标资产](issue_%E7%94%9F%E6%88%90myLingo%E5%BA%94%E7%94%A8%E5%9B%BE%E6%A0%87%E5%A4%9A%E5%B0%BA%E5%AF%B8%E8%B5%84%E6%BA%90%E4%B8%8E%E6%B5%8F%E8%A7%88%E5%99%A8favicon.md) — `BRAND-A-001`；进行中（原文同时包含已完成与未完成项）；原路径 `REQUIREMENTS.md`。
 
-- [RELEASE-A：浏览器版本发布](issue-RELEASE-A-001-OPS-release-versioncontrolid.md) — `RELEASE-A-001`；已完成（沿用原需求记录；本轮未重新执行产品验收）；原路径 `REQUIREMENTS.md`。
+- [RELEASE-A：浏览器版本发布](issue_%E5%9C%A8main%E6%8E%A8%E9%80%81%E5%90%8E%E7%94%A8GitHub-Actions%E9%83%A8%E7%BD%B2Pages%E6%B5%8F%E8%A7%88%E5%99%A8%E5%BA%94%E7%94%A8.md) — `RELEASE-A-001`；已完成（沿用原需求记录；本轮未重新执行产品验收）；原路径 `REQUIREMENTS.md`。
 
-- [X-A：AI 可追踪协作](issue-X-A-001-DOC-ai-collaboration-versioncontrolid.md) — `X-A-001`；待处理（原文未完成项保持未勾选）；原路径 `REQUIREMENTS.md`。
+- [X-A：AI 可追踪协作](issue_%E4%BF%9D%E7%95%99myLingo%E6%97%A7%E5%8D%8F%E4%BD%9C%E8%BF%BD%E8%B8%AA%E6%A3%80%E6%9F%A5%E6%B8%85%E5%8D%95.md) — `X-A-001`；待处理（原文未完成项保持未勾选）；原路径 `REQUIREMENTS.md`。
 
-- [X-B：完成定义](issue-X-B-000-DOC-project-goal-versioncontrolid.md) — `X-B-000`；待处理（原文未完成项保持未勾选）；原路径 `REQUIREMENTS.md`。
+- [X-B：完成定义](issue_%E6%98%8E%E7%A1%AEmyLingo%E4%BB%BB%E5%8A%A1%E4%BA%A4%E4%BB%98%E6%A3%80%E6%9F%A5%E4%B8%8E%E7%94%A8%E6%88%B7%E9%AA%8C%E6%94%B6%E8%BE%B9%E7%95%8C.md) — `X-B-000`；待处理（原文未完成项保持未勾选）；原路径 `REQUIREMENTS.md`。

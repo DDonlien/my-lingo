@@ -194,7 +194,7 @@ npm run build
 ## 文档入口
 
 - Agent 协作规范：`AGENTS.md`
-- 需求与验收追踪：`issue/issue-migration-921e022a49e9-QA-mylingo-versioncontrolid.md`
+- 需求与验收追踪：[说明myLingo需求记录的ID层级与验收标记](issue/issue_%E8%AF%B4%E6%98%8EmyLingo%E9%9C%80%E6%B1%82%E8%AE%B0%E5%BD%95%E7%9A%84ID%E5%B1%82%E7%BA%A7%E4%B8%8E%E9%AA%8C%E6%94%B6%E6%A0%87%E8%AE%B0.md)
 - 视觉规范：`DESIGN.md`
 - 执行日志：`issue/README.md`
 

@@ -192,7 +192,7 @@ Currently, `npm` is preferred since the local Node.js v20 conflicts with global 
 ## Documentation
 
 - **Agent Collaboration Protocol**: `AGENTS.md`
-- **Requirements & Acceptance Checklist**: `issue/issue-migration-921e022a49e9-QA-mylingo-versioncontrolid.md`
+- **Requirements & Acceptance Checklist**: [说明myLingo需求记录的ID层级与验收标记](issue/issue_%E8%AF%B4%E6%98%8EmyLingo%E9%9C%80%E6%B1%82%E8%AE%B0%E5%BD%95%E7%9A%84ID%E5%B1%82%E7%BA%A7%E4%B8%8E%E9%AA%8C%E6%94%B6%E6%A0%87%E8%AE%B0.md)
 - **Design System & Visual Spec**: `DESIGN.md`
 - **Agent Logs**: `issue/README.md`
 

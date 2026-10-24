@@ -1,7 +1,7 @@
 {
   "history_base": "26fae4ec54f1e443bef09cb169fd9250c5cbf7c4",
-  "versioncontrolid": "versioncontrolid",
-  "versioncontrolid_definition": "pending",
+  "versioncontrolid": null,
+  "versioncontrolid_definition": "task implementation Git commit hash or final submitted Perforce changelist",
   "sources": [
     {
       "path": "REQUIREMENTS.md",
@@ -602,31 +602,53 @@
     {
       "path": "REQUIREMENTS.md",
       "issues": [
-        "issue/issue-migration-921e022a49e9-QA-mylingo-versioncontrolid.md",
-        "issue/issue-DOC-A-000-DOC-repository-documentation-foundation-versioncontrolid.md",
-        "issue/issue-FOUND-A-000-DOC-product-versioncontrolid.md",
-        "issue/issue-CORE-A-000-DOC-data-model-versioncontrolid.md",
-        "issue/issue-FILE-A-000-DATA-files-import-save-versioncontrolid.md",
-        "issue/issue-UI-A-000-UI-interface-editing-experience-versioncontrolid.md",
-        "issue/issue-TAG-A-000-DATA-tag-versioncontrolid.md",
-        "issue/issue-SEARCH-A-000-FE-search-filter-versioncontrolid.md",
-        "issue/issue-AI-A-000-PM-ai-translation-api-versioncontrolid.md",
-        "issue/issue-BATCH-A-000-PM-project-goal-versioncontrolid.md",
-        "issue/issue-BATCH-B-000-UI-multiselect-batch-versioncontrolid.md",
-        "issue/issue-QA-A-000-QA-verification-versioncontrolid.md",
-        "issue/issue-EDIT-A-000-DB-editing-state-epic-versioncontrolid.md",
-        "issue/issue-EDIT-B-000-UI-po-state-epic-versioncontrolid.md",
-        "issue/issue-PERF-A-000-SEC-performance-optimization-epic-versioncontrolid.md",
-        "issue/issue-FILE-B-000-PM-project-files-load-epic-versioncontrolid.md",
-        "issue/issue-FILE-C-000-UX-project-list-epic-versioncontrolid.md",
-        "issue/issue-SITE-A-000-DOC-mylingo-website-marketing-site-landing-versioncontrolid.md",
-        "issue/issue-SITE-B-000-OPS-website-build-deployment-versioncontrolid.md",
-        "issue/issue-SITE-C-000-OPS-website-acceptance-versioncontrolid.md",
-        "issue/issue-BACK-A-001-CI-project-goal-versioncontrolid.md",
-        "issue/issue-BRAND-A-001-UI-assets-versioncontrolid.md",
-        "issue/issue-RELEASE-A-001-OPS-release-versioncontrolid.md",
-        "issue/issue-X-A-001-DOC-ai-collaboration-versioncontrolid.md",
-        "issue/issue-X-B-000-DOC-project-goal-versioncontrolid.md"
+        "issue/issue_说明myLingo需求记录的ID层级与验收标记.md",
+        "issue/issue_建立myLingo协作规范并保留旧需求与日志制度记录.md",
+        "issue/issue_补全myLingo产品说明与AI提示变量文档.md",
+        "issue/issue_建立myLingo界面视觉与可访问性规范.md",
+        "issue/issue_定义myLingo本地化编辑器定位与首版范围.md",
+        "issue/issue_统一myLingo品牌命名并兼容旧Lingrid项目与偏好.md",
+        "issue/issue_建立保留PO元数据的翻译矩阵与项目状态模型.md",
+        "issue/issue_导入合并PO-POT-CSV并保持只读模板边界.md",
+        "issue/issue_将修改可靠写回PO与CSV并防止外部覆盖冲突.md",
+        "issue/issue_保存另存与恢复myLingo项目JSON状态.md",
+        "issue/issue_配置语言显示名称并拖放保存列顺序.md",
+        "issue/issue_提供多语言应用外壳与本地化演示项目.md",
+        "issue/issue_在矩阵与详情区编辑译文并查看按需上下文.md",
+        "issue/issue_在文件操作入口区分源文件与项目保存状态.md",
+        "issue/issue_编辑Source-Tag与Word-Tag并支持逐行输入.md",
+        "issue/issue_搜索译文与标签并组合语言完成度和修改筛选.md",
+        "issue/issue_统计翻译条目语言完成率标签与修改数量.md",
+        "issue/issue_配置多Provider接口并生成可确认的单元格翻译建议.md",
+        "issue/issue_渲染目标语言与同源其他译文的提示模板变量.md",
+        "issue/issue_批量填充空译文并支持取消限流重试与失败停止.md",
+        "issue/issue_为选中或空白Source-Tag批量生成标签建议.md",
+        "issue/issue_并发分配多模型翻译并在接口失败时转发.md",
+        "issue/issue_在选定语言与标签范围批量查找替换文本.md",
+        "issue/issue_在矩阵多选复制粘贴批量填写并撤销重做.md",
+        "issue/issue_点击单元格外取消选择并切换AI批量模式.md",
+        "issue/issue_验证PO-POT-CSV往返保真与编辑保存流程.md",
+        "issue/issue_持久化单元格编辑历史并显示和筛选修改状态.md",
+        "issue/issue_检测外部PO变化并独立标记筛选新增词条.md",
+        "issue/issue_通过矩阵虚拟滚动局部状态与组件隔离减少卡顿.md",
+        "issue/issue_合并目录授权并自动加载隐藏my-lingo项目配置.md",
+        "issue/issue_记录最近项目并在打开菜单中快速恢复与移除.md",
+        "issue/issue_搭建可切换中英文并演示核心特性的myLingo介绍网站.md",
+        "issue/issue_将myLingo介绍网站接入构建预览与Pages部署.md",
+        "issue/issue_验收介绍网站布局链接语言切换与性能指标.md",
+        "issue/issue_支持Excel翻译文件导入与导出.md",
+        "issue/issue_为本地化翻译提供术语库支持.md",
+        "issue/issue_封装Electron桌面应用并准备安装包发布.md",
+        "issue/issue_为本地化翻译提供翻译记忆支持.md",
+        "issue/issue_记录待细化的myLingo复杂质量检查需求.md",
+        "issue/issue_提供plural-forms高级编辑能力.md",
+        "issue/issue_对比Git差异与外部翻译文件修改.md",
+        "issue/issue_扩展JSON-i18next-XLIFF翻译文件支持.md",
+        "issue/issue_保留批量AI建议的原始后续待办.md",
+        "issue/issue_生成myLingo应用图标多尺寸资源与浏览器favicon.md",
+        "issue/issue_在main推送后用GitHub-Actions部署Pages浏览器应用.md",
+        "issue/issue_保留myLingo旧协作追踪检查清单.md",
+        "issue/issue_明确myLingo任务交付检查与用户验收边界.md"
       ],
       "legacy_ids": [
         "DOC-A-000",
@@ -1584,8 +1606,8 @@
     {
       "id": "migration-921e022a49e9",
       "type": "QA",
-      "file": "issue-migration-921e022a49e9-QA-mylingo-versioncontrolid.md",
-      "title": "myLingo 需求追踪",
+      "file": "issue_说明myLingo需求记录的ID层级与验收标记.md",
+      "title": "说明myLingo需求记录的ID层级与验收标记",
       "source": "REQUIREMENTS.md",
       "legacy_ids": [],
       "state": "已确认约束 / 状态待核对（原文未单列完成状态）"
@@ -1593,7 +1615,7 @@
     {
       "id": "DOC-A-000",
       "type": "DOC",
-      "file": "issue-DOC-A-000-DOC-repository-documentation-foundation-versioncontrolid.md",
+      "file": "issue_建立myLingo协作规范并保留旧需求与日志制度记录.md",
       "title": "DOC-A：仓库文档基础",
       "source": "REQUIREMENTS.md",
       "legacy_ids": [
@@ -1606,12 +1628,47 @@
         "DOC-A-006",
         "DOC-A-007"
       ],
-      "state": "已完成（沿用原需求记录；本轮未重新执行产品验收）"
+      "state": "已完成（沿用原需求记录；本轮未重新执行产品验收）",
+      "files": [
+        "issue_建立myLingo协作规范并保留旧需求与日志制度记录.md",
+        "issue_补全myLingo产品说明与AI提示变量文档.md",
+        "issue_建立myLingo界面视觉与可访问性规范.md"
+      ],
+      "split_tasks": [
+        {
+          "file": "issue_建立myLingo协作规范并保留旧需求与日志制度记录.md",
+          "title": "建立myLingo协作规范并保留旧需求与日志制度记录",
+          "source_task_ids": [
+            "DOC-A-001",
+            "DOC-A-003",
+            "DOC-A-005"
+          ],
+          "state": "已完成（仅沿用本任务原始勾选；本轮未重新执行产品验收）。"
+        },
+        {
+          "file": "issue_补全myLingo产品说明与AI提示变量文档.md",
+          "title": "补全myLingo产品说明与AI提示变量文档",
+          "source_task_ids": [
+            "DOC-A-002",
+            "DOC-A-006",
+            "DOC-A-007"
+          ],
+          "state": "已完成（仅沿用本任务原始勾选；本轮未重新执行产品验收）。"
+        },
+        {
+          "file": "issue_建立myLingo界面视觉与可访问性规范.md",
+          "title": "建立myLingo界面视觉与可访问性规范",
+          "source_task_ids": [
+            "DOC-A-004"
+          ],
+          "state": "已完成（仅沿用本任务原始勾选；本轮未重新执行产品验收）。"
+        }
+      ]
     },
     {
       "id": "FOUND-A-000",
       "type": "DOC",
-      "file": "issue-FOUND-A-000-DOC-product-versioncontrolid.md",
+      "file": "issue_定义myLingo本地化编辑器定位与首版范围.md",
       "title": "FOUND-A：产品边界",
       "source": "REQUIREMENTS.md",
       "legacy_ids": [
@@ -1622,13 +1679,38 @@
         "FOUND-A-004",
         "FOUND-A-005"
       ],
-      "state": "已完成（沿用原需求记录；本轮未重新执行产品验收）"
+      "state": "已完成（沿用原需求记录；本轮未重新执行产品验收）",
+      "files": [
+        "issue_定义myLingo本地化编辑器定位与首版范围.md",
+        "issue_统一myLingo品牌命名并兼容旧Lingrid项目与偏好.md"
+      ],
+      "split_tasks": [
+        {
+          "file": "issue_定义myLingo本地化编辑器定位与首版范围.md",
+          "title": "定义myLingo本地化编辑器定位与首版范围",
+          "source_task_ids": [
+            "FOUND-A-001",
+            "FOUND-A-002",
+            "FOUND-A-003",
+            "FOUND-A-004"
+          ],
+          "state": "已完成（仅沿用本任务原始勾选；本轮未重新执行产品验收）。"
+        },
+        {
+          "file": "issue_统一myLingo品牌命名并兼容旧Lingrid项目与偏好.md",
+          "title": "统一myLingo品牌命名并兼容旧Lingrid项目与偏好",
+          "source_task_ids": [
+            "FOUND-A-005"
+          ],
+          "state": "已完成（仅沿用本任务原始勾选；本轮未重新执行产品验收）。"
+        }
+      ]
     },
     {
       "id": "CORE-A-000",
       "type": "DOC",
-      "file": "issue-CORE-A-000-DOC-data-model-versioncontrolid.md",
-      "title": "CORE-A：核心数据模型",
+      "file": "issue_建立保留PO元数据的翻译矩阵与项目状态模型.md",
+      "title": "建立保留PO元数据的翻译矩阵与项目状态模型",
       "source": "REQUIREMENTS.md",
       "legacy_ids": [
         "CORE-A-000",
@@ -1644,7 +1726,7 @@
     {
       "id": "FILE-A-000",
       "type": "DATA",
-      "file": "issue-FILE-A-000-DATA-files-import-save-versioncontrolid.md",
+      "file": "issue_导入合并PO-POT-CSV并保持只读模板边界.md",
       "title": "FILE-A：文件导入与保存",
       "source": "REQUIREMENTS.md",
       "legacy_ids": [
@@ -1662,12 +1744,60 @@
         "FILE-A-010",
         "FILE-A-011"
       ],
-      "state": "已完成（沿用原需求记录；本轮未重新执行产品验收）"
+      "state": "已完成（沿用原需求记录；本轮未重新执行产品验收）",
+      "files": [
+        "issue_导入合并PO-POT-CSV并保持只读模板边界.md",
+        "issue_将修改可靠写回PO与CSV并防止外部覆盖冲突.md",
+        "issue_保存另存与恢复myLingo项目JSON状态.md",
+        "issue_配置语言显示名称并拖放保存列顺序.md"
+      ],
+      "split_tasks": [
+        {
+          "file": "issue_导入合并PO-POT-CSV并保持只读模板边界.md",
+          "title": "导入合并PO-POT-CSV并保持只读模板边界",
+          "source_task_ids": [
+            "FILE-A-012",
+            "FILE-A-001",
+            "FILE-A-002",
+            "FILE-A-003",
+            "FILE-A-004"
+          ],
+          "state": "已完成（仅沿用本任务原始勾选；本轮未重新执行产品验收）。"
+        },
+        {
+          "file": "issue_将修改可靠写回PO与CSV并防止外部覆盖冲突.md",
+          "title": "将修改可靠写回PO与CSV并防止外部覆盖冲突",
+          "source_task_ids": [
+            "FILE-A-005",
+            "FILE-A-006",
+            "FILE-A-009",
+            "FILE-A-010"
+          ],
+          "state": "已完成（仅沿用本任务原始勾选；本轮未重新执行产品验收）。"
+        },
+        {
+          "file": "issue_保存另存与恢复myLingo项目JSON状态.md",
+          "title": "保存另存与恢复myLingo项目JSON状态",
+          "source_task_ids": [
+            "FILE-A-007",
+            "FILE-A-008"
+          ],
+          "state": "已完成（仅沿用本任务原始勾选；本轮未重新执行产品验收）。"
+        },
+        {
+          "file": "issue_配置语言显示名称并拖放保存列顺序.md",
+          "title": "配置语言显示名称并拖放保存列顺序",
+          "source_task_ids": [
+            "FILE-A-011"
+          ],
+          "state": "已完成（仅沿用本任务原始勾选；本轮未重新执行产品验收）。"
+        }
+      ]
     },
     {
       "id": "UI-A-000",
       "type": "UI",
-      "file": "issue-UI-A-000-UI-interface-editing-experience-versioncontrolid.md",
+      "file": "issue_提供多语言应用外壳与本地化演示项目.md",
       "title": "UI-A：主界面与编辑体验",
       "source": "REQUIREMENTS.md",
       "legacy_ids": [
@@ -1680,13 +1810,48 @@
         "UI-A-005",
         "UI-A-006"
       ],
-      "state": "已完成（沿用原需求记录；本轮未重新执行产品验收）"
+      "state": "已完成（沿用原需求记录；本轮未重新执行产品验收）",
+      "files": [
+        "issue_提供多语言应用外壳与本地化演示项目.md",
+        "issue_在矩阵与详情区编辑译文并查看按需上下文.md",
+        "issue_在文件操作入口区分源文件与项目保存状态.md"
+      ],
+      "split_tasks": [
+        {
+          "file": "issue_提供多语言应用外壳与本地化演示项目.md",
+          "title": "提供多语言应用外壳与本地化演示项目",
+          "source_task_ids": [
+            "UI-A-001",
+            "UI-A-011"
+          ],
+          "state": "已完成（仅沿用本任务原始勾选；本轮未重新执行产品验收）。"
+        },
+        {
+          "file": "issue_在矩阵与详情区编辑译文并查看按需上下文.md",
+          "title": "在矩阵与详情区编辑译文并查看按需上下文",
+          "source_task_ids": [
+            "UI-A-002",
+            "UI-A-003",
+            "UI-A-004",
+            "UI-A-005"
+          ],
+          "state": "已完成（仅沿用本任务原始勾选；本轮未重新执行产品验收）。"
+        },
+        {
+          "file": "issue_在文件操作入口区分源文件与项目保存状态.md",
+          "title": "在文件操作入口区分源文件与项目保存状态",
+          "source_task_ids": [
+            "UI-A-006"
+          ],
+          "state": "已完成（仅沿用本任务原始勾选；本轮未重新执行产品验收）。"
+        }
+      ]
     },
     {
       "id": "TAG-A-000",
       "type": "DATA",
-      "file": "issue-TAG-A-000-DATA-tag-versioncontrolid.md",
-      "title": "TAG-A：Tag 与标记",
+      "file": "issue_编辑Source-Tag与Word-Tag并支持逐行输入.md",
+      "title": "编辑Source-Tag与Word-Tag并支持逐行输入",
       "source": "REQUIREMENTS.md",
       "legacy_ids": [
         "TAG-A-000",
@@ -1704,7 +1869,7 @@
     {
       "id": "SEARCH-A-000",
       "type": "FE",
-      "file": "issue-SEARCH-A-000-FE-search-filter-versioncontrolid.md",
+      "file": "issue_搜索译文与标签并组合语言完成度和修改筛选.md",
       "title": "SEARCH-A：搜索、筛选与统计",
       "source": "REQUIREMENTS.md",
       "legacy_ids": [
@@ -1721,12 +1886,43 @@
         "SEARCH-A-009",
         "SEARCH-A-010"
       ],
-      "state": "已完成（沿用原需求记录；本轮未重新执行产品验收）"
+      "state": "已完成（沿用原需求记录；本轮未重新执行产品验收）",
+      "files": [
+        "issue_搜索译文与标签并组合语言完成度和修改筛选.md",
+        "issue_统计翻译条目语言完成率标签与修改数量.md"
+      ],
+      "split_tasks": [
+        {
+          "file": "issue_搜索译文与标签并组合语言完成度和修改筛选.md",
+          "title": "搜索译文与标签并组合语言完成度和修改筛选",
+          "source_task_ids": [
+            "SEARCH-A-001",
+            "SEARCH-A-002",
+            "SEARCH-A-003",
+            "SEARCH-A-004",
+            "SEARCH-A-005",
+            "SEARCH-A-006",
+            "SEARCH-A-006-WORD"
+          ],
+          "state": "已完成（仅沿用本任务原始勾选；本轮未重新执行产品验收）。"
+        },
+        {
+          "file": "issue_统计翻译条目语言完成率标签与修改数量.md",
+          "title": "统计翻译条目语言完成率标签与修改数量",
+          "source_task_ids": [
+            "SEARCH-A-007",
+            "SEARCH-A-008",
+            "SEARCH-A-009",
+            "SEARCH-A-010"
+          ],
+          "state": "已完成（仅沿用本任务原始勾选；本轮未重新执行产品验收）。"
+        }
+      ]
     },
     {
       "id": "AI-A-000",
       "type": "PM",
-      "file": "issue-AI-A-000-PM-ai-translation-api-versioncontrolid.md",
+      "file": "issue_配置多Provider接口并生成可确认的单元格翻译建议.md",
       "title": "AI-A：轻量 AI / 翻译 API 建议",
       "source": "REQUIREMENTS.md",
       "legacy_ids": [
@@ -1799,13 +1995,66 @@
         "AI-A-094",
         "AI-A-095"
       ],
-      "state": "进行中（原文同时包含已完成与未完成项）"
+      "state": "进行中（原文同时包含已完成与未完成项）",
+      "files": [
+        "issue_配置多Provider接口并生成可确认的单元格翻译建议.md",
+        "issue_渲染目标语言与同源其他译文的提示模板变量.md",
+        "issue_批量填充空译文并支持取消限流重试与失败停止.md",
+        "issue_为选中或空白Source-Tag批量生成标签建议.md",
+        "issue_并发分配多模型翻译并在接口失败时转发.md"
+      ],
+      "split_tasks": [
+        {
+          "file": "issue_配置多Provider接口并生成可确认的单元格翻译建议.md",
+          "title": "配置多Provider接口并生成可确认的单元格翻译建议",
+          "source_task_ids": [
+            "AI-A-000",
+            "AI-A-020"
+          ],
+          "state": "已完成（仅沿用本任务原始勾选；本轮未重新执行产品验收）。"
+        },
+        {
+          "file": "issue_渲染目标语言与同源其他译文的提示模板变量.md",
+          "title": "渲染目标语言与同源其他译文的提示模板变量",
+          "source_task_ids": [
+            "AI-A-030",
+            "AI-A-050"
+          ],
+          "state": "已完成（仅沿用本任务原始勾选；本轮未重新执行产品验收）。"
+        },
+        {
+          "file": "issue_批量填充空译文并支持取消限流重试与失败停止.md",
+          "title": "批量填充空译文并支持取消限流重试与失败停止",
+          "source_task_ids": [
+            "AI-A-040",
+            "AI-A-060",
+            "AI-A-070"
+          ],
+          "state": "已完成（仅沿用本任务原始勾选；本轮未重新执行产品验收）。"
+        },
+        {
+          "file": "issue_为选中或空白Source-Tag批量生成标签建议.md",
+          "title": "为选中或空白Source-Tag批量生成标签建议",
+          "source_task_ids": [
+            "AI-A-080"
+          ],
+          "state": "待处理（本任务原文未完成项保持未勾选；取消、阻塞和延后标记照录）。"
+        },
+        {
+          "file": "issue_并发分配多模型翻译并在接口失败时转发.md",
+          "title": "并发分配多模型翻译并在接口失败时转发",
+          "source_task_ids": [
+            "AI-A-090"
+          ],
+          "state": "进行中（本任务原文同时包含已完成与未完成项；未由历史日志新增完成勾选）。"
+        }
+      ]
     },
     {
       "id": "BATCH-A-000",
       "type": "PM",
-      "file": "issue-BATCH-A-000-PM-project-goal-versioncontrolid.md",
-      "title": "BATCH-A：轻量批处理",
+      "file": "issue_在选定语言与标签范围批量查找替换文本.md",
+      "title": "在选定语言与标签范围批量查找替换文本",
       "source": "REQUIREMENTS.md",
       "legacy_ids": [
         "BATCH-A-000",
@@ -1820,7 +2069,7 @@
     {
       "id": "BATCH-B-000",
       "type": "UI",
-      "file": "issue-BATCH-B-000-UI-multiselect-batch-versioncontrolid.md",
+      "file": "issue_在矩阵多选复制粘贴批量填写并撤销重做.md",
       "title": "BATCH-B：矩阵多选与批量填写",
       "source": "REQUIREMENTS.md",
       "legacy_ids": [
@@ -1835,13 +2084,35 @@
         "BATCH-B-012",
         "BATCH-B-013"
       ],
-      "state": "进行中（原文同时包含已完成与未完成项）"
+      "state": "进行中（原文同时包含已完成与未完成项）",
+      "files": [
+        "issue_在矩阵多选复制粘贴批量填写并撤销重做.md",
+        "issue_点击单元格外取消选择并切换AI批量模式.md"
+      ],
+      "split_tasks": [
+        {
+          "file": "issue_在矩阵多选复制粘贴批量填写并撤销重做.md",
+          "title": "在矩阵多选复制粘贴批量填写并撤销重做",
+          "source_task_ids": [
+            "BATCH-B-000"
+          ],
+          "state": "已完成（仅沿用本任务原始勾选；本轮未重新执行产品验收）。"
+        },
+        {
+          "file": "issue_点击单元格外取消选择并切换AI批量模式.md",
+          "title": "点击单元格外取消选择并切换AI批量模式",
+          "source_task_ids": [
+            "BATCH-B-010"
+          ],
+          "state": "进行中（本任务原文同时包含已完成与未完成项；未由历史日志新增完成勾选）。"
+        }
+      ]
     },
     {
       "id": "QA-A-000",
       "type": "QA",
-      "file": "issue-QA-A-000-QA-verification-versioncontrolid.md",
-      "title": "QA-A：Phase 1（v0.1）验证",
+      "file": "issue_验证PO-POT-CSV往返保真与编辑保存流程.md",
+      "title": "验证PO-POT-CSV往返保真与编辑保存流程",
       "source": "REQUIREMENTS.md",
       "legacy_ids": [
         "QA-A-000",
@@ -1862,8 +2133,8 @@
     {
       "id": "EDIT-A-000",
       "type": "DB",
-      "file": "issue-EDIT-A-000-DB-editing-state-epic-versioncontrolid.md",
-      "title": "EDIT-A：单元格编辑状态追踪 #epic #P1.5",
+      "file": "issue_持久化单元格编辑历史并显示和筛选修改状态.md",
+      "title": "持久化单元格编辑历史并显示和筛选修改状态",
       "source": "REQUIREMENTS.md",
       "legacy_ids": [
         "EDIT-A-000",
@@ -1884,8 +2155,8 @@
     {
       "id": "EDIT-B-000",
       "type": "UI",
-      "file": "issue-EDIT-B-000-UI-po-state-epic-versioncontrolid.md",
-      "title": "EDIT-B：外部 PO 变更检测与\"新增\"状态 #epic #P1.5",
+      "file": "issue_检测外部PO变化并独立标记筛选新增词条.md",
+      "title": "检测外部PO变化并独立标记筛选新增词条",
       "source": "REQUIREMENTS.md",
       "legacy_ids": [
         "EDIT-B-000",
@@ -1900,8 +2171,8 @@
     {
       "id": "PERF-A-000",
       "type": "SEC",
-      "file": "issue-PERF-A-000-SEC-performance-optimization-epic-versioncontrolid.md",
-      "title": "PERF-A：矩阵大工程性能优化 #epic #P1.5",
+      "file": "issue_通过矩阵虚拟滚动局部状态与组件隔离减少卡顿.md",
+      "title": "通过矩阵虚拟滚动局部状态与组件隔离减少卡顿",
       "source": "REQUIREMENTS.md",
       "legacy_ids": [
         "PERF-A-000",
@@ -1914,8 +2185,8 @@
     {
       "id": "FILE-B-000",
       "type": "PM",
-      "file": "issue-FILE-B-000-PM-project-files-load-epic-versioncontrolid.md",
-      "title": "FILE-B：隐藏式项目文件与文件夹一站式加载 #epic #P1.5",
+      "file": "issue_合并目录授权并自动加载隐藏my-lingo项目配置.md",
+      "title": "合并目录授权并自动加载隐藏my-lingo项目配置",
       "source": "REQUIREMENTS.md",
       "legacy_ids": [
         "FILE-B-000",
@@ -1930,8 +2201,8 @@
     {
       "id": "FILE-C-000",
       "type": "UX",
-      "file": "issue-FILE-C-000-UX-project-list-epic-versioncontrolid.md",
-      "title": "FILE-C：最近项目历史记录列表 #epic #P1.5",
+      "file": "issue_记录最近项目并在打开菜单中快速恢复与移除.md",
+      "title": "记录最近项目并在打开菜单中快速恢复与移除",
       "source": "REQUIREMENTS.md",
       "legacy_ids": [
         "FILE-C-000",
@@ -1945,8 +2216,8 @@
     {
       "id": "SITE-A-000",
       "type": "DOC",
-      "file": "issue-SITE-A-000-DOC-mylingo-website-marketing-site-landing-versioncontrolid.md",
-      "title": "SITE-A：myLingo 介绍网站（Marketing Site / Landing Page）",
+      "file": "issue_搭建可切换中英文并演示核心特性的myLingo介绍网站.md",
+      "title": "搭建可切换中英文并演示核心特性的myLingo介绍网站",
       "source": "REQUIREMENTS.md",
       "legacy_ids": [
         "SITE-A-000",
@@ -1961,8 +2232,8 @@
     {
       "id": "SITE-B-000",
       "type": "OPS",
-      "file": "issue-SITE-B-000-OPS-website-build-deployment-versioncontrolid.md",
-      "title": "SITE-B：网站构建与部署",
+      "file": "issue_将myLingo介绍网站接入构建预览与Pages部署.md",
+      "title": "将myLingo介绍网站接入构建预览与Pages部署",
       "source": "REQUIREMENTS.md",
       "legacy_ids": [
         "SITE-B-000",
@@ -1976,8 +2247,8 @@
     {
       "id": "SITE-C-000",
       "type": "OPS",
-      "file": "issue-SITE-C-000-OPS-website-acceptance-versioncontrolid.md",
-      "title": "SITE-C：网站验收标准",
+      "file": "issue_验收介绍网站布局链接语言切换与性能指标.md",
+      "title": "验收介绍网站布局链接语言切换与性能指标",
       "source": "REQUIREMENTS.md",
       "legacy_ids": [
         "SITE-C-000",
@@ -1993,7 +2264,7 @@
     {
       "id": "BACK-A-001",
       "type": "CI",
-      "file": "issue-BACK-A-001-CI-project-goal-versioncontrolid.md",
+      "file": "issue_支持Excel翻译文件导入与导出.md",
       "title": "BACK-A：格式与工作流扩展",
       "source": "REQUIREMENTS.md",
       "legacy_ids": [
@@ -2007,13 +2278,98 @@
         "BACK-A-007",
         "BACK-A-008"
       ],
-      "state": "进行中（原文同时包含已完成与未完成项）"
+      "state": "进行中（原文同时包含已完成与未完成项）",
+      "files": [
+        "issue_支持Excel翻译文件导入与导出.md",
+        "issue_为本地化翻译提供术语库支持.md",
+        "issue_封装Electron桌面应用并准备安装包发布.md",
+        "issue_为本地化翻译提供翻译记忆支持.md",
+        "issue_记录待细化的myLingo复杂质量检查需求.md",
+        "issue_提供plural-forms高级编辑能力.md",
+        "issue_对比Git差异与外部翻译文件修改.md",
+        "issue_扩展JSON-i18next-XLIFF翻译文件支持.md",
+        "issue_保留批量AI建议的原始后续待办.md"
+      ],
+      "split_tasks": [
+        {
+          "file": "issue_支持Excel翻译文件导入与导出.md",
+          "title": "支持Excel翻译文件导入与导出",
+          "source_task_ids": [
+            "BACK-A-001"
+          ],
+          "state": "待处理（本任务原文未完成项保持未勾选；取消、阻塞和延后标记照录）。"
+        },
+        {
+          "file": "issue_为本地化翻译提供术语库支持.md",
+          "title": "为本地化翻译提供术语库支持",
+          "source_task_ids": [
+            "BACK-A-002"
+          ],
+          "state": "待处理（本任务原文未完成项保持未勾选；取消、阻塞和延后标记照录）。"
+        },
+        {
+          "file": "issue_封装Electron桌面应用并准备安装包发布.md",
+          "title": "封装Electron桌面应用并准备安装包发布",
+          "source_task_ids": [
+            "BACK-A-009"
+          ],
+          "state": "进行中（本任务原文同时包含已完成与未完成项；未由历史日志新增完成勾选）。"
+        },
+        {
+          "file": "issue_为本地化翻译提供翻译记忆支持.md",
+          "title": "为本地化翻译提供翻译记忆支持",
+          "source_task_ids": [
+            "BACK-A-003"
+          ],
+          "state": "待处理（本任务原文未完成项保持未勾选；取消、阻塞和延后标记照录）。"
+        },
+        {
+          "file": "issue_记录待细化的myLingo复杂质量检查需求.md",
+          "title": "记录待细化的myLingo复杂质量检查需求",
+          "source_task_ids": [
+            "BACK-A-004"
+          ],
+          "state": "待处理（本任务原文未完成项保持未勾选；取消、阻塞和延后标记照录）。"
+        },
+        {
+          "file": "issue_提供plural-forms高级编辑能力.md",
+          "title": "提供plural-forms高级编辑能力",
+          "source_task_ids": [
+            "BACK-A-005"
+          ],
+          "state": "待处理（本任务原文未完成项保持未勾选；取消、阻塞和延后标记照录）。"
+        },
+        {
+          "file": "issue_对比Git差异与外部翻译文件修改.md",
+          "title": "对比Git差异与外部翻译文件修改",
+          "source_task_ids": [
+            "BACK-A-006"
+          ],
+          "state": "待处理（本任务原文未完成项保持未勾选；取消、阻塞和延后标记照录）。"
+        },
+        {
+          "file": "issue_扩展JSON-i18next-XLIFF翻译文件支持.md",
+          "title": "扩展JSON-i18next-XLIFF翻译文件支持",
+          "source_task_ids": [
+            "BACK-A-007"
+          ],
+          "state": "待处理（本任务原文未完成项保持未勾选；取消、阻塞和延后标记照录）。"
+        },
+        {
+          "file": "issue_保留批量AI建议的原始后续待办.md",
+          "title": "保留批量AI建议的原始后续待办",
+          "source_task_ids": [
+            "BACK-A-008"
+          ],
+          "state": "待处理（本任务原文未完成项保持未勾选；取消、阻塞和延后标记照录）。"
+        }
+      ]
     },
     {
       "id": "BRAND-A-001",
       "type": "UI",
-      "file": "issue-BRAND-A-001-UI-assets-versioncontrolid.md",
-      "title": "BRAND-A：品牌与图标资产",
+      "file": "issue_生成myLingo应用图标多尺寸资源与浏览器favicon.md",
+      "title": "生成myLingo应用图标多尺寸资源与浏览器favicon",
       "source": "REQUIREMENTS.md",
       "legacy_ids": [
         "BRAND-A-001"
@@ -2023,8 +2379,8 @@
     {
       "id": "RELEASE-A-001",
       "type": "OPS",
-      "file": "issue-RELEASE-A-001-OPS-release-versioncontrolid.md",
-      "title": "RELEASE-A：浏览器版本发布",
+      "file": "issue_在main推送后用GitHub-Actions部署Pages浏览器应用.md",
+      "title": "在main推送后用GitHub-Actions部署Pages浏览器应用",
       "source": "REQUIREMENTS.md",
       "legacy_ids": [
         "RELEASE-A-001"
@@ -2034,8 +2390,8 @@
     {
       "id": "X-A-001",
       "type": "DOC",
-      "file": "issue-X-A-001-DOC-ai-collaboration-versioncontrolid.md",
-      "title": "X-A：AI 可追踪协作",
+      "file": "issue_保留myLingo旧协作追踪检查清单.md",
+      "title": "保留myLingo旧协作追踪检查清单",
       "source": "REQUIREMENTS.md",
       "legacy_ids": [
         "X-A-001",
@@ -2049,8 +2405,8 @@
     {
       "id": "X-B-000",
       "type": "DOC",
-      "file": "issue-X-B-000-DOC-project-goal-versioncontrolid.md",
-      "title": "X-B：完成定义",
+      "file": "issue_明确myLingo任务交付检查与用户验收边界.md",
+      "title": "明确myLingo任务交付检查与用户验收边界",
       "source": "REQUIREMENTS.md",
       "legacy_ids": [
         "X-B-000",
@@ -2062,5 +2418,129 @@
       "state": "待处理（原文未完成项保持未勾选）"
     }
   ],
-  "note": "Original states retained; historical log evidence does not complete current tasks."
+  "note": "Original states retained; historical log evidence does not complete current tasks.",
+  "versioncontrolid_status": "unverified implementation versions explicitly recorded per issue and omitted from filenames",
+  "naming_corrections": [
+    {
+      "time": "2026-10-24 06:07:34 UTC",
+      "old_to_current_files": {
+        "issue/issue-template.md": "issue/issue_template.md"
+      },
+      "new_format": "issue-specific-task-description[-verified-implementation-version].md",
+      "batch": "final-underscore-rules"
+    },
+    {
+      "time": "2026-10-24 06:30:10 UTC",
+      "old_to_current_files": {
+        "issue/issue-DOC-migration-20261023-DOC-migrate-project-workflow-versioncontrolid.md": "issue/issue_迁移项目任务与协作记录_21e4c099.md"
+      },
+      "new_format": "issue-specific-task-description[-verified-implementation-version].md",
+      "batch": "native-document-records"
+    },
+    {
+      "time": "2026-10-24 07:13:06 UTC",
+      "batch": "group-f-5",
+      "old_to_current_files": {
+        "issue/issue-migration-921e022a49e9-QA-mylingo-versioncontrolid.md": [
+          "issue/issue_说明myLingo需求记录的ID层级与验收标记.md"
+        ],
+        "issue/issue-DOC-A-000-DOC-repository-documentation-foundation-versioncontrolid.md": [
+          "issue/issue_建立myLingo协作规范并保留旧需求与日志制度记录.md",
+          "issue/issue_补全myLingo产品说明与AI提示变量文档.md",
+          "issue/issue_建立myLingo界面视觉与可访问性规范.md"
+        ],
+        "issue/issue-FOUND-A-000-DOC-product-versioncontrolid.md": [
+          "issue/issue_定义myLingo本地化编辑器定位与首版范围.md",
+          "issue/issue_统一myLingo品牌命名并兼容旧Lingrid项目与偏好.md"
+        ],
+        "issue/issue-CORE-A-000-DOC-data-model-versioncontrolid.md": [
+          "issue/issue_建立保留PO元数据的翻译矩阵与项目状态模型.md"
+        ],
+        "issue/issue-FILE-A-000-DATA-files-import-save-versioncontrolid.md": [
+          "issue/issue_导入合并PO-POT-CSV并保持只读模板边界.md",
+          "issue/issue_将修改可靠写回PO与CSV并防止外部覆盖冲突.md",
+          "issue/issue_保存另存与恢复myLingo项目JSON状态.md",
+          "issue/issue_配置语言显示名称并拖放保存列顺序.md"
+        ],
+        "issue/issue-UI-A-000-UI-interface-editing-experience-versioncontrolid.md": [
+          "issue/issue_提供多语言应用外壳与本地化演示项目.md",
+          "issue/issue_在矩阵与详情区编辑译文并查看按需上下文.md",
+          "issue/issue_在文件操作入口区分源文件与项目保存状态.md"
+        ],
+        "issue/issue-TAG-A-000-DATA-tag-versioncontrolid.md": [
+          "issue/issue_编辑Source-Tag与Word-Tag并支持逐行输入.md"
+        ],
+        "issue/issue-SEARCH-A-000-FE-search-filter-versioncontrolid.md": [
+          "issue/issue_搜索译文与标签并组合语言完成度和修改筛选.md",
+          "issue/issue_统计翻译条目语言完成率标签与修改数量.md"
+        ],
+        "issue/issue-AI-A-000-PM-ai-translation-api-versioncontrolid.md": [
+          "issue/issue_配置多Provider接口并生成可确认的单元格翻译建议.md",
+          "issue/issue_渲染目标语言与同源其他译文的提示模板变量.md",
+          "issue/issue_批量填充空译文并支持取消限流重试与失败停止.md",
+          "issue/issue_为选中或空白Source-Tag批量生成标签建议.md",
+          "issue/issue_并发分配多模型翻译并在接口失败时转发.md"
+        ],
+        "issue/issue-BATCH-A-000-PM-project-goal-versioncontrolid.md": [
+          "issue/issue_在选定语言与标签范围批量查找替换文本.md"
+        ],
+        "issue/issue-BATCH-B-000-UI-multiselect-batch-versioncontrolid.md": [
+          "issue/issue_在矩阵多选复制粘贴批量填写并撤销重做.md",
+          "issue/issue_点击单元格外取消选择并切换AI批量模式.md"
+        ],
+        "issue/issue-QA-A-000-QA-verification-versioncontrolid.md": [
+          "issue/issue_验证PO-POT-CSV往返保真与编辑保存流程.md"
+        ],
+        "issue/issue-EDIT-A-000-DB-editing-state-epic-versioncontrolid.md": [
+          "issue/issue_持久化单元格编辑历史并显示和筛选修改状态.md"
+        ],
+        "issue/issue-EDIT-B-000-UI-po-state-epic-versioncontrolid.md": [
+          "issue/issue_检测外部PO变化并独立标记筛选新增词条.md"
+        ],
+        "issue/issue-PERF-A-000-SEC-performance-optimization-epic-versioncontrolid.md": [
+          "issue/issue_通过矩阵虚拟滚动局部状态与组件隔离减少卡顿.md"
+        ],
+        "issue/issue-FILE-B-000-PM-project-files-load-epic-versioncontrolid.md": [
+          "issue/issue_合并目录授权并自动加载隐藏my-lingo项目配置.md"
+        ],
+        "issue/issue-FILE-C-000-UX-project-list-epic-versioncontrolid.md": [
+          "issue/issue_记录最近项目并在打开菜单中快速恢复与移除.md"
+        ],
+        "issue/issue-SITE-A-000-DOC-mylingo-website-marketing-site-landing-versioncontrolid.md": [
+          "issue/issue_搭建可切换中英文并演示核心特性的myLingo介绍网站.md"
+        ],
+        "issue/issue-SITE-B-000-OPS-website-build-deployment-versioncontrolid.md": [
+          "issue/issue_将myLingo介绍网站接入构建预览与Pages部署.md"
+        ],
+        "issue/issue-SITE-C-000-OPS-website-acceptance-versioncontrolid.md": [
+          "issue/issue_验收介绍网站布局链接语言切换与性能指标.md"
+        ],
+        "issue/issue-BACK-A-001-CI-project-goal-versioncontrolid.md": [
+          "issue/issue_支持Excel翻译文件导入与导出.md",
+          "issue/issue_为本地化翻译提供术语库支持.md",
+          "issue/issue_封装Electron桌面应用并准备安装包发布.md",
+          "issue/issue_为本地化翻译提供翻译记忆支持.md",
+          "issue/issue_记录待细化的myLingo复杂质量检查需求.md",
+          "issue/issue_提供plural-forms高级编辑能力.md",
+          "issue/issue_对比Git差异与外部翻译文件修改.md",
+          "issue/issue_扩展JSON-i18next-XLIFF翻译文件支持.md",
+          "issue/issue_保留批量AI建议的原始后续待办.md"
+        ],
+        "issue/issue-BRAND-A-001-UI-assets-versioncontrolid.md": [
+          "issue/issue_生成myLingo应用图标多尺寸资源与浏览器favicon.md"
+        ],
+        "issue/issue-RELEASE-A-001-OPS-release-versioncontrolid.md": [
+          "issue/issue_在main推送后用GitHub-Actions部署Pages浏览器应用.md"
+        ],
+        "issue/issue-X-A-001-DOC-ai-collaboration-versioncontrolid.md": [
+          "issue/issue_保留myLingo旧协作追踪检查清单.md"
+        ],
+        "issue/issue-X-B-000-DOC-project-goal-versioncontrolid.md": [
+          "issue/issue_明确myLingo任务交付检查与用户验收边界.md"
+        ]
+      },
+      "format": "issue_任务描述[_实际版本编号].md",
+      "history_policy": "source Comments kept once in primary task; siblings link to primary"
+    }
+  ]
 }
